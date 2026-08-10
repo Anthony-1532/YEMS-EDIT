@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:," />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Connection Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; background: #f5f5f5; }
+        .card { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #7B1D3C; }
+        h2 { color: #333; font-size: 1.2rem; margin-top: 0; }
+        .success { color: #2D9B6F; }
+        .error { color: #DC2626; }
+        .info { color: #1E90FF; }
+        button { padding: 10px 20px; margin: 5px; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; }
+        .btn-primary { background: #7B1D3C; color: white; }
+        .btn-success { background: #2D9B6F; color: white; }
+        .btn-info { background: #1E90FF; color: white; }
+        pre { background: #f9f9f9; padding: 15px; border-radius: 5px; overflow-x: auto; font-size: 0.85rem; }
+        .log-item { padding: 5px 0; border-bottom: 1px solid #eee; }
+        input { padding: 8px; margin: 5px; border: 1px solid #ddd; border-radius: 4px; width: 250px; }
+        .form-group { margin: 10px 0; }
+        label { display: block; margin-bottom: 5px; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <h1><svg class="icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v4a6 6 0 0 1-6 6h-4a6 6 0 0 1-6-6V8"/></svg> YEMS API Connection Test</h1>
+    
+    <div class="card">
+        <h2>1. Health Check</h2>
+        <button class="btn-info" onclick="testHealth()">Test Health Endpoint</button>
+        <div id="health-result"></div>
+    </div>
+
+    <div class="card">
+        <h2>2. Login Test</h2>
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="email" id="test-email" value="student@yems.local" />
+        </div>
+        <div class="form-group">
+            <label>Password:</label>
+            <input type="password" id="test-password" value="student123" />
+        </div>
+        <button class="btn-primary" onclick="testLogin()">Test Login</button>
+        <div id="login-result"></div>
+    </div>
+
+    <div class="card">
+        <h2>3. CORS Test</h2>
+        <button class="btn-success" onclick="testCORS()">Test CORS Headers</button>
+        <div id="cors-result"></div>
+    </div>
+
+    <div class="card">
+        <h2>Console Logs</h2>
+        <div id="logs"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'https://kennedi-ungnostic-unconvulsively.ngrok-free.dev/api';
+        
+        function log(message, type = 'info') {
+            const logs = document.getElementById('logs');
+            const item = document.createElement('div');
+            item.className = 'log-item';
+            item.style.color = type === 'error' ? '#DC2626' : (type === 'success' ? '#2D9B6F' : '#333');
+            item.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            logs.insertBefore(item, logs.firstChild);
+            console.log(message);
+        }
+
+        async function testHealth() {
+            const resultDiv = document.getElementById('health-result');
+            resultDiv.innerHTML = '<p>Testing...</p>';
+            log('Testing health endpoint...');
+
+            try {
+                const response = await fetch(`${API_BASE}/health/`, {
+                    method: 'GET',
+                    mode: 'cors',
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                log(`Health response status: ${response.status}`, 'success');
+                
+                const data = await response.json();
+                resultDiv.innerHTML = `<pre class="success">✓ Success!\nStatus: ${response.status}\nResponse: ${JSON.stringify(data, null, 2)}</pre>`;
+                log('Health check passed!', 'success');
+            } catch (error) {
+                resultDiv.innerHTML = `<pre class="error">✗ Error: ${error.message}\n\nThis usually means:\n1. CORS is blocking the request\n2. The API server is down\n3. Network connectivity issue</pre>`;
+                log(`Health check failed: ${error.message}`, 'error');
+            }
+        }
+
+        async function testLogin() {
+            const resultDiv = document.getElementById('login-result');
+            const email = document.getElementById('test-email').value;
+            const password = document.getElementById('test-password').value;
+            
+            resultDiv.innerHTML = '<p>Testing login...</p>';
+            log(`Testing login with email: ${email}`);
+
+            try {
+                const response = await fetch(`${API_BASE}/auth/login`, {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                log(`Login response status: ${response.status}`);
+
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `<pre class="success">✓ Login Successful!\nStatus: ${response.status}\nToken: ${data.token || data.accessToken || 'N/A'}\nUser: ${JSON.stringify(data.user || data, null, 2)}</pre>`;
+                    log('Login successful!', 'success');
+                } else {
+                    const error = await response.json().catch(() => ({ message: 'Unknown error' }));
+                    resultDiv.innerHTML = `<pre class="error">✗ Login Failed\nStatus: ${response.status}\nError: ${JSON.stringify(error, null, 2)}</pre>`;
+                    log(`Login failed: ${error.message}`, 'error');
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<pre class="error">✗ Error: ${error.message}\n\nCORS Error? Try:\n1. Check if API server has CORS enabled\n2. Use a CORS proxy\n3. Run frontend on same domain as API</pre>`;
+                log(`Login error: ${error.message}`, 'error');
+            }
+        }
+
+        async function testCORS() {
+            const resultDiv = document.getElementById('cors-result');
+            resultDiv.innerHTML = '<p>Testing CORS...</p>';
+            log('Testing CORS headers...');
+
+            try {
+                const response = await fetch(`${API_BASE}/health/`, {
+                    method: 'OPTIONS',
+                    mode: 'cors'
+                });
+
+                const corsHeaders = {
+                    'Access-Control-Allow-Origin': response.headers.get('Access-Control-Allow-Origin'),
+                    'Access-Control-Allow-Methods': response.headers.get('Access-Control-Allow-Methods'),
+                    'Access-Control-Allow-Headers': response.headers.get('Access-Control-Allow-Headers')
+                };
+
+                resultDiv.innerHTML = `<pre class="success">✓ CORS Headers:\n${JSON.stringify(corsHeaders, null, 2)}</pre>`;
+                log('CORS test passed', 'success');
+            } catch (error) {
+                resultDiv.innerHTML = `<pre class="error">✗ CORS Test Failed: ${error.message}\n\nThe API server may not have CORS enabled.\nContact the API administrator to enable CORS for your frontend domain.</pre>`;
+                log(`CORS test failed: ${error.message}`, 'error');
+            }
+        }
+
+        // Auto-run health check on load
+        window.addEventListener('DOMContentLoaded', () => {
+            log('Page loaded. Run tests manually or wait...');
+            setTimeout(() => {
+                log('Auto-running health check...');
+                testHealth();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

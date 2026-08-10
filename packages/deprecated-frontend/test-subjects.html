@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:," />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject Test</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        button { padding: 10px 20px; margin: 5px; border: none; border-radius: 5px; cursor: pointer; }
+        .btn-primary { background: #7B1D3C; color: white; }
+        .btn-success { background: #2D9B6F; color: white; }
+        .btn-danger { background: #DC2626; color: white; }
+        input, select { padding: 8px; margin: 5px; border: 1px solid #ddd; border-radius: 4px; }
+        .subject-list { margin-top: 20px; }
+        .subject-item { padding: 10px; margin: 5px 0; background: #f9f9f9; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; }
+        h2 { color: #7B1D3C; }
+        .section { margin: 20px 0; padding: 15px; background: #fafafa; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><svg class="icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg> Subject Management Test</h1>
+        
+        <div class="section">
+            <h2>Add Junior Subject</h2>
+            <input type="text" id="juniorSubject" placeholder="Subject name">
+            <button class="btn-primary" onclick="addJunior()">Add</button>
+        </div>
+
+        <div class="section">
+            <h2>Add Senior Subject</h2>
+            <select id="seniorDept">
+                <option value="science">Science</option>
+                <option value="art">Art</option>
+                <option value="commercial">Commercial</option>
+            </select>
+            <input type="text" id="seniorSubject" placeholder="Subject name">
+            <button class="btn-primary" onclick="addSenior()">Add</button>
+        </div>
+
+        <div class="section">
+            <h2>Current Subjects</h2>
+            <button class="btn-success" onclick="loadSubjects()"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg> Refresh</button>
+            <button class="btn-danger" onclick="clearAll()"><svg class="icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>️ Clear All</button>
+            <div id="subjectList" class="subject-list"></div>
+        </div>
+    </div>
+
+    <script>
+        function getSubjects() {
+            return JSON.parse(localStorage.getItem('yep_subjects') || '{"junior":[],"senior":{"science":[],"art":[],"commercial":[]}}');
+        }
+
+        function saveSubjects(subjects) {
+            localStorage.setItem('yep_subjects', JSON.stringify(subjects));
+        }
+
+        function addJunior() {
+            const name = document.getElementById('juniorSubject').value.trim();
+            if (!name) { alert('Enter subject name'); return; }
+            
+            const subjects = getSubjects();
+            if (!subjects.junior) subjects.junior = [];
+            if (subjects.junior.includes(name)) { alert('Already exists'); return; }
+            
+            subjects.junior.push(name);
+            saveSubjects(subjects);
+            document.getElementById('juniorSubject').value = '';
+            loadSubjects();
+            alert('Added: ' + name);
+        }
+
+        function addSenior() {
+            const name = document.getElementById('seniorSubject').value.trim();
+            const dept = document.getElementById('seniorDept').value;
+            if (!name) { alert('Enter subject name'); return; }
+            
+            const subjects = getSubjects();
+            if (!subjects.senior) subjects.senior = {science:[], art:[], commercial:[]};
+            if (!subjects.senior[dept]) subjects.senior[dept] = [];
+            if (subjects.senior[dept].includes(name)) { alert('Already exists'); return; }
+            
+            subjects.senior[dept].push(name);
+            saveSubjects(subjects);
+            document.getElementById('seniorSubject').value = '';
+            loadSubjects();
+            alert('Added: ' + name + ' (' + dept + ')');
+        }
+
+        function deleteJunior(name) {
+            const subjects = getSubjects();
+            subjects.junior = subjects.junior.filter(s => s !== name);
+            saveSubjects(subjects);
+            loadSubjects();
+        }
+
+        function deleteSenior(name, dept) {
+            const subjects = getSubjects();
+            if (subjects.senior && subjects.senior[dept]) {
+                subjects.senior[dept] = subjects.senior[dept].filter(s => s !== name);
+                saveSubjects(subjects);
+                loadSubjects();
+            }
+        }
+
+        function clearAll() {
+            if (confirm('Delete all subjects?')) {
+                localStorage.removeItem('yep_subjects');
+                loadSubjects();
+            }
+        }
+
+        function loadSubjects() {
+            const subjects = getSubjects();
+            const list = document.getElementById('subjectList');
+            
+            let html = '<h3>Junior Secondary (' + subjects.junior.length + ')</h3>';
+            if (subjects.junior && subjects.junior.length > 0) {
+                subjects.junior.forEach(s => {
+                    html += '<div class="subject-item">' + s + ' <button class="btn-danger" style="padding:5px 10px;" onclick="deleteJunior(\'' + s + '\')">Delete</button></div>';
+                });
+            } else {
+                html += '<p style="color:#999;">No junior subjects</p>';
+            }
+
+            ['science', 'art', 'commercial'].forEach(dept => {
+                const deptSubjects = subjects.senior[dept] || [];
+                html += '<h3>Senior - ' + dept.charAt(0).toUpperCase() + dept.slice(1) + ' (' + deptSubjects.length + ')</h3>';
+                if (deptSubjects.length > 0) {
+                    deptSubjects.forEach(s => {
+                        html += '<div class="subject-item">' + s + ' <button class="btn-danger" style="padding:5px 10px;" onclick="deleteSenior(\'' + s + '\', \'' + dept + '\')">Delete</button></div>';
+                    });
+                } else {
+                    html += '<p style="color:#999;">No ' + dept + ' subjects</p>';
+                }
+            });
+
+            list.innerHTML = html;
+        }
+
+        // Load on page load
+        loadSubjects();
+    </script>
+</body>
+</html>

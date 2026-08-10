@@ -1,0 +1,9 @@
+.git
+.env
+node_modules
+*.log
+*.rdb
+*.tar
+.omo
+.orchids
+dump.rdb

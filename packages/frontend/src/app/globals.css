@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+:root {
+  /* Base palette */
+  --background: #FAF8F5; /* Warm cream/ivory base */
+  --foreground: #1A1215; /* Rich dark-chocolate slate */
+  --card: #ffffff;
+  --card-2: #F1F5F9; /* Cool slate-100 neutral for contrast */
+  --card-hover: #F8FAFC; /* Cool slate hover */
+  --border: #E8E1D7; /* Soft cream border */
+  --border-focus: #7b1d3c;
+
+  /* Brand */
+  --maroon: #7b1d3c;
+  --maroon-dark: #5e1530;
+  --maroon-light: #9b2d54;
+  --maroon-muted: #f5ebed; /* Soft wine highlight */
+
+  /* Text */
+  --text-secondary: #5C646B; /* Muted cool-slate text */
+  --text-muted: #8A949D;
+
+  /* Status colours */
+  --success: #0D9488; /* Complementary Teal-mint accent for YEMS brand */
+  --success-bg: #F0FDFA;
+  --warning: #d97706;
+  --warning-bg: #fffbeb;
+  --danger: #dc2626;
+  --danger-bg: #fef2f2;
+  --info: #0284C7; /* Cool sky info */
+  --info-bg: #F0F9FF;
+  --neutral-bg: #F1F5F9;
+
+  /* Elevation */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.03);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.06), 0 2px 4px rgba(0,0,0,.04);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,.08), 0 4px 8px rgba(0,0,0,.04);
+  --shadow-xl: 0 20px 50px rgba(0,0,0,.11), 0 8px 16px rgba(0,0,0,.06);
+
+  /* Sidebar */
+  --sidebar-width: 260px;
+
+  /* Transitions */
+  --transition: 150ms cubic-bezier(.4,0,.2,1);
+  --transition-slow: 250ms cubic-bezier(.4,0,.2,1);
+}
+
+:root.dark, .dark {
+  --background: #0F1115; /* Clean Slate-Charcoal dark neutral */
+  --foreground: #F4F4F6;
+  --card: #16191E;
+  --card-glass: rgba(22, 25, 30, 0.75);
+  --card-2: #1F232B;
+  --card-hover: #262B34;
+  --border: #2E333F;
+  --maroon-muted: #3A1423;
+  --text-secondary: #94A3B8; /* Slate-400 */
+  --text-muted: #64748B; /* Slate-500 */
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-2: var(--card-2);
+  --color-border: var(--border);
+  --color-maroon: var(--maroon);
+  --color-maroon-dark: var(--maroon-dark);
+  --color-maroon-light: var(--maroon-light);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --font-sans: "Plus Jakarta Sans", Arial, Helvetica, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Plus Jakarta Sans", Arial, Helvetica, sans-serif;
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* ── Mobile safe area ── */
+@media (max-width: 639px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  input, select, textarea {
+    font-size: 16px; /* prevent iOS zoom on focus */
+  }
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ── Skeleton shimmer ── */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--card-2) 25%, var(--border) 50%, var(--card-2) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+/* ── Stat card counter ── */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.stat-value { animation: countUp 0.4s ease-out both; }
+
+/* ── Fade in ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.3s ease-out both; }
+
+/* ── Page slide-in ── */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.slide-in { animation: slideIn 0.25s ease-out both; }
+
+/* ── Modal backdrop ── */
+@keyframes backdropFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes modalSlide {
+  from { opacity: 0; transform: scale(0.96) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.modal-backdrop { animation: backdropFade 0.2s ease-out; }
+.modal-panel    { animation: modalSlide 0.2s ease-out; }
+
+/* ── Focus ring ── */
+:focus-visible {
+  outline: 2px solid var(--maroon);
+  outline-offset: 2px;
+}
+
+/* ── Table row hover ── */
+.table-row {
+  transition: background var(--transition);
+}
+.table-row:hover {
+  background: var(--card-2);
+}
+
+/* ── Login Page Enhancements ── */
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.95) translateY(20px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.card-pop-in {
+  animation: popIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes float-blob-1 {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(40px, -60px) scale(1.15); }
+  66% { transform: translate(-30px, 40px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+@keyframes float-blob-2 {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(-50px, 40px) scale(0.85); }
+  66% { transform: translate(40px, -30px) scale(1.1); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+.animate-blob-1 {
+  animation: float-blob-1 15s infinite alternate ease-in-out;
+}
+.animate-blob-2 {
+  animation: float-blob-2 18s infinite alternate ease-in-out;
+}
+
+/* ── Print (Reports & Analytics export / PDF) ── */
+@media print {
+  .no-print { display: none !important; }
+  aside, header { display: none !important; }
+  main { overflow: visible !important; padding: 0 !important; }
+  .print-area .fade-in { animation: none !important; }
+}

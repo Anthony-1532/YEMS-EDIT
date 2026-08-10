@@ -1,0 +1,2443 @@
+﻿{
+    "id":  "a3617d6d-ac54-4afd-9703-143d36b71dc4",
+    "prevId":  "cb7c85ea-8f22-4733-b965-70b0e8740f23",
+    "version":  "7",
+    "dialect":  "postgresql",
+    "tables":  {
+                   "public.account_settings":  {
+                                                   "name":  "account_settings",
+                                                   "schema":  "",
+                                                   "columns":  {
+                                                                   "id":  {
+                                                                              "name":  "id",
+                                                                              "type":  "varchar(36)",
+                                                                              "primaryKey":  true,
+                                                                              "notNull":  true
+                                                                          },
+                                                                   "fee_amount":  {
+                                                                                      "name":  "fee_amount",
+                                                                                      "type":  "integer",
+                                                                                      "primaryKey":  false,
+                                                                                      "notNull":  false,
+                                                                                      "default":  50000
+                                                                                  },
+                                                                   "threshold_30":  {
+                                                                                        "name":  "threshold_30",
+                                                                                        "type":  "integer",
+                                                                                        "primaryKey":  false,
+                                                                                        "notNull":  false,
+                                                                                        "default":  15000
+                                                                                    },
+                                                                   "threshold_70":  {
+                                                                                        "name":  "threshold_70",
+                                                                                        "type":  "integer",
+                                                                                        "primaryKey":  false,
+                                                                                        "notNull":  false,
+                                                                                        "default":  35000
+                                                                                    },
+                                                                   "school_email":  {
+                                                                                        "name":  "school_email",
+                                                                                        "type":  "varchar(255)",
+                                                                                        "primaryKey":  false,
+                                                                                        "notNull":  false
+                                                                                    },
+                                                                   "email_subject":  {
+                                                                                         "name":  "email_subject",
+                                                                                         "type":  "varchar(255)",
+                                                                                         "primaryKey":  false,
+                                                                                         "notNull":  false
+                                                                                     },
+                                                                   "account_number":  {
+                                                                                          "name":  "account_number",
+                                                                                          "type":  "varchar(50)",
+                                                                                          "primaryKey":  false,
+                                                                                          "notNull":  false
+                                                                                      },
+                                                                   "created_at":  {
+                                                                                      "name":  "created_at",
+                                                                                      "type":  "timestamp",
+                                                                                      "primaryKey":  false,
+                                                                                      "notNull":  true,
+                                                                                      "default":  "now()"
+                                                                                  },
+                                                                   "updated_at":  {
+                                                                                      "name":  "updated_at",
+                                                                                      "type":  "timestamp",
+                                                                                      "primaryKey":  false,
+                                                                                      "notNull":  true,
+                                                                                      "default":  "now()"
+                                                                                  }
+                                                               },
+                                                   "indexes":  {
+
+                                                               },
+                                                   "foreignKeys":  {
+
+                                                                   },
+                                                   "compositePrimaryKeys":  {
+
+                                                                            },
+                                                   "uniqueConstraints":  {
+
+                                                                         },
+                                                   "policies":  {
+
+                                                                },
+                                                   "checkConstraints":  {
+
+                                                                        },
+                                                   "isRLSEnabled":  false
+                                               },
+                   "public.bills":  {
+                                        "name":  "bills",
+                                        "schema":  "",
+                                        "columns":  {
+                                                        "id":  {
+                                                                   "name":  "id",
+                                                                   "type":  "varchar(36)",
+                                                                   "primaryKey":  true,
+                                                                   "notNull":  true
+                                                               },
+                                                        "student_id":  {
+                                                                           "name":  "student_id",
+                                                                           "type":  "varchar(36)",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  true
+                                                                       },
+                                                        "student_name":  {
+                                                                             "name":  "student_name",
+                                                                             "type":  "varchar(255)",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  false
+                                                                         },
+                                                        "class":  {
+                                                                      "name":  "class",
+                                                                      "type":  "varchar(20)",
+                                                                      "primaryKey":  false,
+                                                                      "notNull":  false
+                                                                  },
+                                                        "amount":  {
+                                                                       "name":  "amount",
+                                                                       "type":  "integer",
+                                                                       "primaryKey":  false,
+                                                                       "notNull":  true
+                                                                   },
+                                                        "description":  {
+                                                                            "name":  "description",
+                                                                            "type":  "varchar(255)",
+                                                                            "primaryKey":  false,
+                                                                            "notNull":  false
+                                                                        },
+                                                        "due_date":  {
+                                                                         "name":  "due_date",
+                                                                         "type":  "timestamp",
+                                                                         "primaryKey":  false,
+                                                                         "notNull":  false
+                                                                     },
+                                                        "status":  {
+                                                                       "name":  "status",
+                                                                       "type":  "varchar(20)",
+                                                                       "primaryKey":  false,
+                                                                       "notNull":  false,
+                                                                       "default":  "\u0027pending\u0027"
+                                                                   },
+                                                        "created_at":  {
+                                                                           "name":  "created_at",
+                                                                           "type":  "timestamp",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  true,
+                                                                           "default":  "now()"
+                                                                       }
+                                                    },
+                                        "indexes":  {
+
+                                                    },
+                                        "foreignKeys":  {
+
+                                                        },
+                                        "compositePrimaryKeys":  {
+
+                                                                 },
+                                        "uniqueConstraints":  {
+
+                                                              },
+                                        "policies":  {
+
+                                                     },
+                                        "checkConstraints":  {
+
+                                                             },
+                                        "isRLSEnabled":  false
+                                    },
+                   "public.payments":  {
+                                           "name":  "payments",
+                                           "schema":  "",
+                                           "columns":  {
+                                                           "id":  {
+                                                                      "name":  "id",
+                                                                      "type":  "varchar(36)",
+                                                                      "primaryKey":  true,
+                                                                      "notNull":  true
+                                                                  },
+                                                           "bill_id":  {
+                                                                           "name":  "bill_id",
+                                                                           "type":  "varchar(36)",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  false
+                                                                       },
+                                                           "student_id":  {
+                                                                              "name":  "student_id",
+                                                                              "type":  "varchar(36)",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  true
+                                                                          },
+                                                           "student_name":  {
+                                                                                "name":  "student_name",
+                                                                                "type":  "varchar(255)",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  false
+                                                                            },
+                                                           "class":  {
+                                                                         "name":  "class",
+                                                                         "type":  "varchar(20)",
+                                                                         "primaryKey":  false,
+                                                                         "notNull":  false
+                                                                     },
+                                                           "amount":  {
+                                                                          "name":  "amount",
+                                                                          "type":  "integer",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  true
+                                                                      },
+                                                           "payment_method":  {
+                                                                                  "name":  "payment_method",
+                                                                                  "type":  "varchar(50)",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  false
+                                                                              },
+                                                           "reference":  {
+                                                                             "name":  "reference",
+                                                                             "type":  "varchar(100)",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  false
+                                                                         },
+                                                           "status":  {
+                                                                          "name":  "status",
+                                                                          "type":  "varchar(20)",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  false,
+                                                                          "default":  "\u0027completed\u0027"
+                                                                      },
+                                                           "paid_at":  {
+                                                                           "name":  "paid_at",
+                                                                           "type":  "timestamp",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  true,
+                                                                           "default":  "now()"
+                                                                       },
+                                                           "created_at":  {
+                                                                              "name":  "created_at",
+                                                                              "type":  "timestamp",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  true,
+                                                                              "default":  "now()"
+                                                                          }
+                                                       },
+                                           "indexes":  {
+
+                                                       },
+                                           "foreignKeys":  {
+
+                                                           },
+                                           "compositePrimaryKeys":  {
+
+                                                                    },
+                                           "uniqueConstraints":  {
+
+                                                                 },
+                                           "policies":  {
+
+                                                        },
+                                           "checkConstraints":  {
+
+                                                                },
+                                           "isRLSEnabled":  false
+                                       },
+                   "public.admissions":  {
+                                             "name":  "admissions",
+                                             "schema":  "",
+                                             "columns":  {
+                                                             "id":  {
+                                                                        "name":  "id",
+                                                                        "type":  "varchar(36)",
+                                                                        "primaryKey":  true,
+                                                                        "notNull":  true
+                                                                    },
+                                                             "first_name":  {
+                                                                                "name":  "first_name",
+                                                                                "type":  "varchar(100)",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  true
+                                                                            },
+                                                             "last_name":  {
+                                                                               "name":  "last_name",
+                                                                               "type":  "varchar(100)",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  true
+                                                                           },
+                                                             "email":  {
+                                                                           "name":  "email",
+                                                                           "type":  "varchar(255)",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  false
+                                                                       },
+                                                             "phone":  {
+                                                                           "name":  "phone",
+                                                                           "type":  "varchar(20)",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  false
+                                                                       },
+                                                             "date_of_birth":  {
+                                                                                   "name":  "date_of_birth",
+                                                                                   "type":  "varchar(20)",
+                                                                                   "primaryKey":  false,
+                                                                                   "notNull":  false
+                                                                               },
+                                                             "gender":  {
+                                                                            "name":  "gender",
+                                                                            "type":  "varchar(10)",
+                                                                            "primaryKey":  false,
+                                                                            "notNull":  false
+                                                                        },
+                                                             "class":  {
+                                                                           "name":  "class",
+                                                                           "type":  "varchar(20)",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  false
+                                                                       },
+                                                             "parent_name":  {
+                                                                                 "name":  "parent_name",
+                                                                                 "type":  "varchar(255)",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  false
+                                                                             },
+                                                             "parent_phone":  {
+                                                                                  "name":  "parent_phone",
+                                                                                  "type":  "varchar(20)",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  false
+                                                                              },
+                                                             "admission_status":  {
+                                                                                      "name":  "admission_status",
+                                                                                      "type":  "admission_status",
+                                                                                      "typeSchema":  "public",
+                                                                                      "primaryKey":  false,
+                                                                                      "notNull":  false,
+                                                                                      "default":  "\u0027pending\u0027"
+                                                                                  },
+                                                             "session":  {
+                                                                             "name":  "session",
+                                                                             "type":  "varchar(20)",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  false
+                                                                         },
+                                                             "created_at":  {
+                                                                                "name":  "created_at",
+                                                                                "type":  "timestamp",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  true,
+                                                                                "default":  "now()"
+                                                                            }
+                                                         },
+                                             "indexes":  {
+
+                                                         },
+                                             "foreignKeys":  {
+
+                                                             },
+                                             "compositePrimaryKeys":  {
+
+                                                                      },
+                                             "uniqueConstraints":  {
+
+                                                                   },
+                                             "policies":  {
+
+                                                          },
+                                             "checkConstraints":  {
+
+                                                                  },
+                                             "isRLSEnabled":  false
+                                         },
+                   "public.assignments":  {
+                                              "name":  "assignments",
+                                              "schema":  "",
+                                              "columns":  {
+                                                              "id":  {
+                                                                         "name":  "id",
+                                                                         "type":  "varchar(36)",
+                                                                         "primaryKey":  true,
+                                                                         "notNull":  true
+                                                                     },
+                                                              "title":  {
+                                                                            "name":  "title",
+                                                                            "type":  "varchar(255)",
+                                                                            "primaryKey":  false,
+                                                                            "notNull":  true
+                                                                        },
+                                                              "description":  {
+                                                                                  "name":  "description",
+                                                                                  "type":  "text",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  false
+                                                                              },
+                                                              "subject":  {
+                                                                              "name":  "subject",
+                                                                              "type":  "varchar(100)",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  false
+                                                                          },
+                                                              "status":  {
+                                                                             "name":  "status",
+                                                                             "type":  "status",
+                                                                             "typeSchema":  "public",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  false,
+                                                                             "default":  "\u0027active\u0027"
+                                                                         },
+                                                              "due_date":  {
+                                                                               "name":  "due_date",
+                                                                               "type":  "timestamp",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  false
+                                                                           },
+                                                              "due_label":  {
+                                                                                "name":  "due_label",
+                                                                                "type":  "varchar(50)",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  false
+                                                                            },
+                                                              "due_class":  {
+                                                                                "name":  "due_class",
+                                                                                "type":  "due_class",
+                                                                                "typeSchema":  "public",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  false
+                                                                            },
+                                                              "est":  {
+                                                                          "name":  "est",
+                                                                          "type":  "varchar(20)",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  false
+                                                                      },
+                                                              "icon":  {
+                                                                           "name":  "icon",
+                                                                           "type":  "varchar(10)",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  false
+                                                                       },
+                                                              "icon_color":  {
+                                                                                 "name":  "icon_color",
+                                                                                 "type":  "varchar(20)",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  false
+                                                                             },
+                                                              "created_by":  {
+                                                                                 "name":  "created_by",
+                                                                                 "type":  "varchar(36)",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  true
+                                                                             },
+                                                              "created_at":  {
+                                                                                 "name":  "created_at",
+                                                                                 "type":  "timestamp",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  true,
+                                                                                 "default":  "now()"
+                                                                             },
+                                                              "updated_at":  {
+                                                                                 "name":  "updated_at",
+                                                                                 "type":  "timestamp",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  true,
+                                                                                 "default":  "now()"
+                                                                             }
+                                                          },
+                                              "indexes":  {
+
+                                                          },
+                                              "foreignKeys":  {
+
+                                                              },
+                                              "compositePrimaryKeys":  {
+
+                                                                       },
+                                              "uniqueConstraints":  {
+
+                                                                    },
+                                              "policies":  {
+
+                                                           },
+                                              "checkConstraints":  {
+
+                                                                   },
+                                              "isRLSEnabled":  false
+                                          },
+                   "public.audit_logs":  {
+                                             "name":  "audit_logs",
+                                             "schema":  "",
+                                             "columns":  {
+                                                             "id":  {
+                                                                        "name":  "id",
+                                                                        "type":  "varchar(36)",
+                                                                        "primaryKey":  true,
+                                                                        "notNull":  true
+                                                                    },
+                                                             "action":  {
+                                                                            "name":  "action",
+                                                                            "type":  "varchar(100)",
+                                                                            "primaryKey":  false,
+                                                                            "notNull":  true
+                                                                        },
+                                                             "entity_type":  {
+                                                                                 "name":  "entity_type",
+                                                                                 "type":  "varchar(50)",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  true
+                                                                             },
+                                                             "entity_id":  {
+                                                                               "name":  "entity_id",
+                                                                               "type":  "varchar(36)",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  false
+                                                                           },
+                                                             "actor_id":  {
+                                                                              "name":  "actor_id",
+                                                                              "type":  "varchar(36)",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  true
+                                                                          },
+                                                             "details":  {
+                                                                             "name":  "details",
+                                                                             "type":  "jsonb",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  false
+                                                                         },
+                                                             "created_at":  {
+                                                                                "name":  "created_at",
+                                                                                "type":  "timestamp",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  true,
+                                                                                "default":  "now()"
+                                                                            }
+                                                         },
+                                             "indexes":  {
+
+                                                         },
+                                             "foreignKeys":  {
+
+                                                             },
+                                             "compositePrimaryKeys":  {
+
+                                                                      },
+                                             "uniqueConstraints":  {
+
+                                                                   },
+                                             "policies":  {
+
+                                                          },
+                                             "checkConstraints":  {
+
+                                                                  },
+                                             "isRLSEnabled":  false
+                                         },
+                   "public.classes":  {
+                                          "name":  "classes",
+                                          "schema":  "",
+                                          "columns":  {
+                                                          "id":  {
+                                                                     "name":  "id",
+                                                                     "type":  "varchar(36)",
+                                                                     "primaryKey":  true,
+                                                                     "notNull":  true
+                                                                 },
+                                                          "level":  {
+                                                                        "name":  "level",
+                                                                        "type":  "varchar(20)",
+                                                                        "primaryKey":  false,
+                                                                        "notNull":  true
+                                                                    },
+                                                          "stream":  {
+                                                                         "name":  "stream",
+                                                                         "type":  "varchar(20)",
+                                                                         "primaryKey":  false,
+                                                                         "notNull":  true
+                                                                     },
+                                                          "display_name":  {
+                                                                               "name":  "display_name",
+                                                                               "type":  "varchar(50)",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  true
+                                                                           },
+                                                          "created_at":  {
+                                                                             "name":  "created_at",
+                                                                             "type":  "timestamp",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  true,
+                                                                             "default":  "now()"
+                                                                         },
+                                                          "updated_at":  {
+                                                                             "name":  "updated_at",
+                                                                             "type":  "timestamp",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  true,
+                                                                             "default":  "now()"
+                                                                         }
+                                                      },
+                                          "indexes":  {
+
+                                                      },
+                                          "foreignKeys":  {
+
+                                                          },
+                                          "compositePrimaryKeys":  {
+
+                                                                   },
+                                          "uniqueConstraints":  {
+
+                                                                },
+                                          "policies":  {
+
+                                                       },
+                                          "checkConstraints":  {
+
+                                                               },
+                                          "isRLSEnabled":  false
+                                      },
+                   "public.exams":  {
+                                        "name":  "exams",
+                                        "schema":  "",
+                                        "columns":  {
+                                                        "id":  {
+                                                                   "name":  "id",
+                                                                   "type":  "varchar(36)",
+                                                                   "primaryKey":  true,
+                                                                   "notNull":  true
+                                                               },
+                                                        "title":  {
+                                                                      "name":  "title",
+                                                                      "type":  "varchar(255)",
+                                                                      "primaryKey":  false,
+                                                                      "notNull":  true
+                                                                  },
+                                                        "description":  {
+                                                                            "name":  "description",
+                                                                            "type":  "text",
+                                                                            "primaryKey":  false,
+                                                                            "notNull":  false
+                                                                        },
+                                                        "exam_type":  {
+                                                                          "name":  "exam_type",
+                                                                          "type":  "exam_type",
+                                                                          "typeSchema":  "public",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  true
+                                                                      },
+                                                        "exam_format":  {
+                                                                            "name":  "exam_format",
+                                                                            "type":  "exam_format",
+                                                                            "typeSchema":  "public",
+                                                                            "primaryKey":  false,
+                                                                            "notNull":  false,
+                                                                            "default":  "\u0027mcq\u0027"
+                                                                        },
+                                                        "questions":  {
+                                                                          "name":  "questions",
+                                                                          "type":  "jsonb",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  false
+                                                                      },
+                                                        "duration":  {
+                                                                         "name":  "duration",
+                                                                         "type":  "integer",
+                                                                         "primaryKey":  false,
+                                                                         "notNull":  false
+                                                                     },
+                                                        "passing_score":  {
+                                                                              "name":  "passing_score",
+                                                                              "type":  "integer",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  false
+                                                                          },
+                                                        "subject":  {
+                                                                        "name":  "subject",
+                                                                        "type":  "varchar(100)",
+                                                                        "primaryKey":  false,
+                                                                        "notNull":  false
+                                                                    },
+                                                        "class":  {
+                                                                      "name":  "class",
+                                                                      "type":  "varchar(50)",
+                                                                      "primaryKey":  false,
+                                                                      "notNull":  false
+                                                                  },
+                                                        "exam_status":  {
+                                                                            "name":  "exam_status",
+                                                                            "type":  "exam_status",
+                                                                            "typeSchema":  "public",
+                                                                            "primaryKey":  false,
+                                                                            "notNull":  false,
+                                                                            "default":  "\u0027not-started\u0027"
+                                                                        },
+                                                        "show_results":  {
+                                                                             "name":  "show_results",
+                                                                             "type":  "boolean",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  true,
+                                                                             "default":  false
+                                                                         },
+                                                        "questions_count":  {
+                                                                                "name":  "questions_count",
+                                                                                "type":  "integer",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  false
+                                                                            },
+                                                        "questions_list":  {
+                                                                               "name":  "questions_list",
+                                                                               "type":  "jsonb",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  false
+                                                                           },
+                                                        "icon":  {
+                                                                     "name":  "icon",
+                                                                     "type":  "varchar(10)",
+                                                                     "primaryKey":  false,
+                                                                     "notNull":  false
+                                                                 },
+                                                        "bg":  {
+                                                                   "name":  "bg",
+                                                                   "type":  "varchar(20)",
+                                                                   "primaryKey":  false,
+                                                                   "notNull":  false
+                                                               },
+                                                        "icon_color":  {
+                                                                           "name":  "icon_color",
+                                                                           "type":  "varchar(20)",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  false
+                                                                       },
+                                                        "start_time":  {
+                                                                           "name":  "start_time",
+                                                                           "type":  "timestamp",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  false
+                                                                       },
+                                                        "file_data":  {
+                                                                          "name":  "file_data",
+                                                                          "type":  "text",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  false
+                                                                      },
+                                                        "file_name":  {
+                                                                          "name":  "file_name",
+                                                                          "type":  "varchar(255)",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  false
+                                                                      },
+                                                        "created_by":  {
+                                                                           "name":  "created_by",
+                                                                           "type":  "varchar(36)",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  true
+                                                                       },
+                                                        "created_at":  {
+                                                                           "name":  "created_at",
+                                                                           "type":  "timestamp",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  true,
+                                                                           "default":  "now()"
+                                                                       },
+                                                        "updated_at":  {
+                                                                           "name":  "updated_at",
+                                                                           "type":  "timestamp",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  true,
+                                                                           "default":  "now()"
+                                                                       }
+                                                    },
+                                        "indexes":  {
+
+                                                    },
+                                        "foreignKeys":  {
+
+                                                        },
+                                        "compositePrimaryKeys":  {
+
+                                                                 },
+                                        "uniqueConstraints":  {
+
+                                                              },
+                                        "policies":  {
+
+                                                     },
+                                        "checkConstraints":  {
+
+                                                             },
+                                        "isRLSEnabled":  false
+                                    },
+                   "public.users":  {
+                                        "name":  "users",
+                                        "schema":  "",
+                                        "columns":  {
+                                                        "id":  {
+                                                                   "name":  "id",
+                                                                   "type":  "varchar(36)",
+                                                                   "primaryKey":  true,
+                                                                   "notNull":  true
+                                                               },
+                                                        "name":  {
+                                                                     "name":  "name",
+                                                                     "type":  "varchar(255)",
+                                                                     "primaryKey":  false,
+                                                                     "notNull":  true
+                                                                 },
+                                                        "initials":  {
+                                                                         "name":  "initials",
+                                                                         "type":  "varchar(10)",
+                                                                         "primaryKey":  false,
+                                                                         "notNull":  false
+                                                                     },
+                                                        "email":  {
+                                                                      "name":  "email",
+                                                                      "type":  "varchar(255)",
+                                                                      "primaryKey":  false,
+                                                                      "notNull":  true
+                                                                  },
+                                                        "password":  {
+                                                                         "name":  "password",
+                                                                         "type":  "varchar(255)",
+                                                                         "primaryKey":  false,
+                                                                         "notNull":  true
+                                                                     },
+                                                        "role":  {
+                                                                     "name":  "role",
+                                                                     "type":  "role",
+                                                                     "typeSchema":  "public",
+                                                                     "primaryKey":  false,
+                                                                     "notNull":  true,
+                                                                     "default":  "\u0027student\u0027"
+                                                                 },
+                                                        "student_id":  {
+                                                                           "name":  "student_id",
+                                                                           "type":  "varchar(50)",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  false
+                                                                       },
+                                                        "teacher_id":  {
+                                                                           "name":  "teacher_id",
+                                                                           "type":  "varchar(50)",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  false
+                                                                       },
+                                                        "admin_id":  {
+                                                                         "name":  "admin_id",
+                                                                         "type":  "varchar(50)",
+                                                                         "primaryKey":  false,
+                                                                         "notNull":  false
+                                                                     },
+                                                        "accountant_id":  {
+                                                                              "name":  "accountant_id",
+                                                                              "type":  "varchar(50)",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  false
+                                                                          },
+                                                        "class":  {
+                                                                      "name":  "class",
+                                                                      "type":  "varchar(50)",
+                                                                      "primaryKey":  false,
+                                                                      "notNull":  false
+                                                                  },
+                                                        "session":  {
+                                                                        "name":  "session",
+                                                                        "type":  "varchar(20)",
+                                                                        "primaryKey":  false,
+                                                                        "notNull":  false,
+                                                                        "default":  "\u00272024/2025\u0027"
+                                                                    },
+                                                        "term":  {
+                                                                     "name":  "term",
+                                                                     "type":  "varchar(20)",
+                                                                     "primaryKey":  false,
+                                                                     "notNull":  false,
+                                                                     "default":  "\u0027Second Term\u0027"
+                                                                 },
+                                                        "sex":  {
+                                                                    "name":  "sex",
+                                                                    "type":  "varchar(10)",
+                                                                    "primaryKey":  false,
+                                                                    "notNull":  false
+                                                                },
+                                                        "admission_no":  {
+                                                                             "name":  "admission_no",
+                                                                             "type":  "varchar(50)",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  false
+                                                                         },
+                                                        "assigned_subjects":  {
+                                                                                  "name":  "assigned_subjects",
+                                                                                  "type":  "text",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  false
+                                                                              },
+                                                        "assigned_classes":  {
+                                                                                 "name":  "assigned_classes",
+                                                                                 "type":  "text",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  false
+                                                                             },
+                                                        "is_class_teacher":  {
+                                                                                 "name":  "is_class_teacher",
+                                                                                 "type":  "boolean",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  false,
+                                                                                 "default":  false
+                                                                             },
+                                                        "class_teacher_of":  {
+                                                                                 "name":  "class_teacher_of",
+                                                                                 "type":  "varchar(20)",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  false
+                                                                             },
+                                                        "email_verified":  {
+                                                                               "name":  "email_verified",
+                                                                               "type":  "boolean",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  false,
+                                                                               "default":  false
+                                                                           },
+                                                        "is_suspended":  {
+                                                                             "name":  "is_suspended",
+                                                                             "type":  "boolean",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  false,
+                                                                             "default":  false
+                                                                         },
+                                                        "profile_picture":  {
+                                                                                "name":  "profile_picture",
+                                                                                "type":  "text",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  false
+                                                                            },
+                                                        "created_at":  {
+                                                                           "name":  "created_at",
+                                                                           "type":  "timestamp",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  true,
+                                                                           "default":  "now()"
+                                                                       },
+                                                        "updated_at":  {
+                                                                           "name":  "updated_at",
+                                                                           "type":  "timestamp",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  true,
+                                                                           "default":  "now()"
+                                                                       }
+                                                    },
+                                        "indexes":  {
+
+                                                    },
+                                        "foreignKeys":  {
+
+                                                        },
+                                        "compositePrimaryKeys":  {
+
+                                                                 },
+                                        "uniqueConstraints":  {
+                                                                  "users_email_unique":  {
+                                                                                             "name":  "users_email_unique",
+                                                                                             "nullsNotDistinct":  false,
+                                                                                             "columns":  [
+                                                                                                             "email"
+                                                                                                         ]
+                                                                                         }
+                                                              },
+                                        "policies":  {
+
+                                                     },
+                                        "checkConstraints":  {
+
+                                                             },
+                                        "isRLSEnabled":  false
+                                    },
+                   "public.notes":  {
+                                        "name":  "notes",
+                                        "schema":  "",
+                                        "columns":  {
+                                                        "id":  {
+                                                                   "name":  "id",
+                                                                   "type":  "varchar(36)",
+                                                                   "primaryKey":  true,
+                                                                   "notNull":  true
+                                                               },
+                                                        "title":  {
+                                                                      "name":  "title",
+                                                                      "type":  "varchar(255)",
+                                                                      "primaryKey":  false,
+                                                                      "notNull":  true
+                                                                  },
+                                                        "content":  {
+                                                                        "name":  "content",
+                                                                        "type":  "text",
+                                                                        "primaryKey":  false,
+                                                                        "notNull":  false
+                                                                    },
+                                                        "subject":  {
+                                                                        "name":  "subject",
+                                                                        "type":  "varchar(100)",
+                                                                        "primaryKey":  false,
+                                                                        "notNull":  false
+                                                                    },
+                                                        "subject_id":  {
+                                                                           "name":  "subject_id",
+                                                                           "type":  "varchar(36)",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  false
+                                                                       },
+                                                        "week":  {
+                                                                     "name":  "week",
+                                                                     "type":  "varchar(10)",
+                                                                     "primaryKey":  false,
+                                                                     "notNull":  false
+                                                                 },
+                                                        "term":  {
+                                                                     "name":  "term",
+                                                                     "type":  "varchar(20)",
+                                                                     "primaryKey":  false,
+                                                                     "notNull":  false
+                                                                 },
+                                                        "date":  {
+                                                                     "name":  "date",
+                                                                     "type":  "varchar(20)",
+                                                                     "primaryKey":  false,
+                                                                     "notNull":  false
+                                                                 },
+                                                        "icon":  {
+                                                                     "name":  "icon",
+                                                                     "type":  "varchar(10)",
+                                                                     "primaryKey":  false,
+                                                                     "notNull":  false
+                                                                 },
+                                                        "icon_color":  {
+                                                                           "name":  "icon_color",
+                                                                           "type":  "varchar(20)",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  false
+                                                                       },
+                                                        "file_data":  {
+                                                                          "name":  "file_data",
+                                                                          "type":  "text",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  false
+                                                                      },
+                                                        "file_name":  {
+                                                                          "name":  "file_name",
+                                                                          "type":  "varchar(100)",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  false
+                                                                      },
+                                                        "created_by":  {
+                                                                           "name":  "created_by",
+                                                                           "type":  "varchar(36)",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  true
+                                                                       },
+                                                        "created_at":  {
+                                                                           "name":  "created_at",
+                                                                           "type":  "timestamp",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  true,
+                                                                           "default":  "now()"
+                                                                       },
+                                                        "updated_at":  {
+                                                                           "name":  "updated_at",
+                                                                           "type":  "timestamp",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  true,
+                                                                           "default":  "now()"
+                                                                       }
+                                                    },
+                                        "indexes":  {
+
+                                                    },
+                                        "foreignKeys":  {
+
+                                                        },
+                                        "compositePrimaryKeys":  {
+
+                                                                 },
+                                        "uniqueConstraints":  {
+
+                                                              },
+                                        "policies":  {
+
+                                                     },
+                                        "checkConstraints":  {
+
+                                                             },
+                                        "isRLSEnabled":  false
+                                    },
+                   "public.refresh_tokens":  {
+                                                 "name":  "refresh_tokens",
+                                                 "schema":  "",
+                                                 "columns":  {
+                                                                 "id":  {
+                                                                            "name":  "id",
+                                                                            "type":  "varchar(36)",
+                                                                            "primaryKey":  true,
+                                                                            "notNull":  true
+                                                                        },
+                                                                 "user_id":  {
+                                                                                 "name":  "user_id",
+                                                                                 "type":  "varchar(36)",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  true
+                                                                             },
+                                                                 "token":  {
+                                                                               "name":  "token",
+                                                                               "type":  "varchar(512)",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  true
+                                                                           },
+                                                                 "expires_at":  {
+                                                                                    "name":  "expires_at",
+                                                                                    "type":  "timestamp",
+                                                                                    "primaryKey":  false,
+                                                                                    "notNull":  true
+                                                                                },
+                                                                 "revoked":  {
+                                                                                 "name":  "revoked",
+                                                                                 "type":  "boolean",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  false,
+                                                                                 "default":  false
+                                                                             },
+                                                                 "created_at":  {
+                                                                                    "name":  "created_at",
+                                                                                    "type":  "timestamp",
+                                                                                    "primaryKey":  false,
+                                                                                    "notNull":  true,
+                                                                                    "default":  "now()"
+                                                                                }
+                                                             },
+                                                 "indexes":  {
+
+                                                             },
+                                                 "foreignKeys":  {
+
+                                                                 },
+                                                 "compositePrimaryKeys":  {
+
+                                                                          },
+                                                 "uniqueConstraints":  {
+                                                                           "refresh_tokens_token_unique":  {
+                                                                                                               "name":  "refresh_tokens_token_unique",
+                                                                                                               "nullsNotDistinct":  false,
+                                                                                                               "columns":  [
+                                                                                                                               "token"
+                                                                                                                           ]
+                                                                                                           }
+                                                                       },
+                                                 "policies":  {
+
+                                                              },
+                                                 "checkConstraints":  {
+
+                                                                      },
+                                                 "isRLSEnabled":  false
+                                             },
+                   "public.institutions":  {
+                                               "name":  "institutions",
+                                               "schema":  "",
+                                               "columns":  {
+                                                               "id":  {
+                                                                          "name":  "id",
+                                                                          "type":  "varchar(36)",
+                                                                          "primaryKey":  true,
+                                                                          "notNull":  true
+                                                                      },
+                                                               "name":  {
+                                                                            "name":  "name",
+                                                                            "type":  "varchar(255)",
+                                                                            "primaryKey":  false,
+                                                                            "notNull":  true
+                                                                        },
+                                                               "address":  {
+                                                                               "name":  "address",
+                                                                               "type":  "text",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  false
+                                                                           },
+                                                               "contact_email":  {
+                                                                                     "name":  "contact_email",
+                                                                                     "type":  "varchar(255)",
+                                                                                     "primaryKey":  false,
+                                                                                     "notNull":  false
+                                                                                 },
+                                                               "status":  {
+                                                                              "name":  "status",
+                                                                              "type":  "varchar(20)",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  false,
+                                                                              "default":  "\u0027active\u0027"
+                                                                          },
+                                                               "students":  {
+                                                                                "name":  "students",
+                                                                                "type":  "integer",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  false,
+                                                                                "default":  0
+                                                                            },
+                                                               "teachers":  {
+                                                                                "name":  "teachers",
+                                                                                "type":  "integer",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  false,
+                                                                                "default":  0
+                                                                            },
+                                                               "created_at":  {
+                                                                                  "name":  "created_at",
+                                                                                  "type":  "timestamp",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  true,
+                                                                                  "default":  "now()"
+                                                                              },
+                                                               "updated_at":  {
+                                                                                  "name":  "updated_at",
+                                                                                  "type":  "timestamp",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  true,
+                                                                                  "default":  "now()"
+                                                                              }
+                                                           },
+                                               "indexes":  {
+
+                                                           },
+                                               "foreignKeys":  {
+
+                                                               },
+                                               "compositePrimaryKeys":  {
+
+                                                                        },
+                                               "uniqueConstraints":  {
+
+                                                                     },
+                                               "policies":  {
+
+                                                            },
+                                               "checkConstraints":  {
+
+                                                                    },
+                                               "isRLSEnabled":  false
+                                           },
+                   "public.subjects":  {
+                                           "name":  "subjects",
+                                           "schema":  "",
+                                           "columns":  {
+                                                           "id":  {
+                                                                      "name":  "id",
+                                                                      "type":  "varchar(36)",
+                                                                      "primaryKey":  true,
+                                                                      "notNull":  true
+                                                                  },
+                                                           "name":  {
+                                                                        "name":  "name",
+                                                                        "type":  "varchar(100)",
+                                                                        "primaryKey":  false,
+                                                                        "notNull":  true
+                                                                    },
+                                                           "code":  {
+                                                                        "name":  "code",
+                                                                        "type":  "varchar(20)",
+                                                                        "primaryKey":  false,
+                                                                        "notNull":  false
+                                                                    },
+                                                           "description":  {
+                                                                               "name":  "description",
+                                                                               "type":  "text",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  false
+                                                                           },
+                                                           "category":  {
+                                                                            "name":  "category",
+                                                                            "type":  "varchar(20)",
+                                                                            "primaryKey":  false,
+                                                                            "notNull":  true
+                                                                        },
+                                                           "department":  {
+                                                                              "name":  "department",
+                                                                              "type":  "varchar(20)",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  false
+                                                                          },
+                                                           "created_at":  {
+                                                                              "name":  "created_at",
+                                                                              "type":  "timestamp",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  true,
+                                                                              "default":  "now()"
+                                                                          },
+                                                           "updated_at":  {
+                                                                              "name":  "updated_at",
+                                                                              "type":  "timestamp",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  true,
+                                                                              "default":  "now()"
+                                                                          }
+                                                       },
+                                           "indexes":  {
+
+                                                       },
+                                           "foreignKeys":  {
+
+                                                           },
+                                           "compositePrimaryKeys":  {
+
+                                                                    },
+                                           "uniqueConstraints":  {
+                                                                     "subjects_code_unique":  {
+                                                                                                  "name":  "subjects_code_unique",
+                                                                                                  "nullsNotDistinct":  false,
+                                                                                                  "columns":  [
+                                                                                                                  "code"
+                                                                                                              ]
+                                                                                              }
+                                                                 },
+                                           "policies":  {
+
+                                                        },
+                                           "checkConstraints":  {
+
+                                                                },
+                                           "isRLSEnabled":  false
+                                       },
+                   "public.results":  {
+                                          "name":  "results",
+                                          "schema":  "",
+                                          "columns":  {
+                                                          "id":  {
+                                                                     "name":  "id",
+                                                                     "type":  "varchar(36)",
+                                                                     "primaryKey":  true,
+                                                                     "notNull":  true
+                                                                 },
+                                                          "student_id":  {
+                                                                             "name":  "student_id",
+                                                                             "type":  "varchar(36)",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  true
+                                                                         },
+                                                          "exam_id":  {
+                                                                          "name":  "exam_id",
+                                                                          "type":  "varchar(36)",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  false
+                                                                      },
+                                                          "subject":  {
+                                                                          "name":  "subject",
+                                                                          "type":  "varchar(100)",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  true
+                                                                      },
+                                                          "score":  {
+                                                                        "name":  "score",
+                                                                        "type":  "integer",
+                                                                        "primaryKey":  false,
+                                                                        "notNull":  true
+                                                                    },
+                                                          "total_score":  {
+                                                                              "name":  "total_score",
+                                                                              "type":  "integer",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  true
+                                                                          },
+                                                          "grade":  {
+                                                                        "name":  "grade",
+                                                                        "type":  "varchar(5)",
+                                                                        "primaryKey":  false,
+                                                                        "notNull":  false
+                                                                    },
+                                                          "remarks":  {
+                                                                          "name":  "remarks",
+                                                                          "type":  "varchar(255)",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  false
+                                                                      },
+                                                          "class":  {
+                                                                        "name":  "class",
+                                                                        "type":  "varchar(20)",
+                                                                        "primaryKey":  false,
+                                                                        "notNull":  false
+                                                                    },
+                                                          "session":  {
+                                                                          "name":  "session",
+                                                                          "type":  "varchar(20)",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  false
+                                                                      },
+                                                          "term":  {
+                                                                       "name":  "term",
+                                                                       "type":  "varchar(20)",
+                                                                       "primaryKey":  false,
+                                                                       "notNull":  false
+                                                                   },
+                                                          "exam_title":  {
+                                                                             "name":  "exam_title",
+                                                                             "type":  "varchar(255)",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  false
+                                                                         },
+                                                          "date":  {
+                                                                       "name":  "date",
+                                                                       "type":  "varchar(20)",
+                                                                       "primaryKey":  false,
+                                                                       "notNull":  false
+                                                                   },
+                                                          "created_at":  {
+                                                                             "name":  "created_at",
+                                                                             "type":  "timestamp",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  true,
+                                                                             "default":  "now()"
+                                                                         }
+                                                      },
+                                          "indexes":  {
+
+                                                      },
+                                          "foreignKeys":  {
+
+                                                          },
+                                          "compositePrimaryKeys":  {
+
+                                                                   },
+                                          "uniqueConstraints":  {
+
+                                                                },
+                                          "policies":  {
+
+                                                       },
+                                          "checkConstraints":  {
+
+                                                               },
+                                          "isRLSEnabled":  false
+                                      },
+                   "public.notifications":  {
+                                                "name":  "notifications",
+                                                "schema":  "",
+                                                "columns":  {
+                                                                "id":  {
+                                                                           "name":  "id",
+                                                                           "type":  "varchar(36)",
+                                                                           "primaryKey":  true,
+                                                                           "notNull":  true
+                                                                       },
+                                                                "notif_type":  {
+                                                                                   "name":  "notif_type",
+                                                                                   "type":  "notif_type",
+                                                                                   "typeSchema":  "public",
+                                                                                   "primaryKey":  false,
+                                                                                   "notNull":  true
+                                                                               },
+                                                                "title":  {
+                                                                              "name":  "title",
+                                                                              "type":  "varchar(255)",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  true
+                                                                          },
+                                                                "message":  {
+                                                                                "name":  "message",
+                                                                                "type":  "text",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  true
+                                                                            },
+                                                                "note_id":  {
+                                                                                "name":  "note_id",
+                                                                                "type":  "varchar(36)",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  false
+                                                                            },
+                                                                "exam_id":  {
+                                                                                "name":  "exam_id",
+                                                                                "type":  "varchar(36)",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  false
+                                                                            },
+                                                                "assignment_id":  {
+                                                                                      "name":  "assignment_id",
+                                                                                      "type":  "varchar(36)",
+                                                                                      "primaryKey":  false,
+                                                                                      "notNull":  false
+                                                                                  },
+                                                                "from_user_id":  {
+                                                                                     "name":  "from_user_id",
+                                                                                     "type":  "varchar(36)",
+                                                                                     "primaryKey":  false,
+                                                                                     "notNull":  false
+                                                                                 },
+                                                                "to_user_id":  {
+                                                                                   "name":  "to_user_id",
+                                                                                   "type":  "varchar(36)",
+                                                                                   "primaryKey":  false,
+                                                                                   "notNull":  false
+                                                                               },
+                                                                "read":  {
+                                                                             "name":  "read",
+                                                                             "type":  "boolean",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  false,
+                                                                             "default":  false
+                                                                         },
+                                                                "date":  {
+                                                                             "name":  "date",
+                                                                             "type":  "varchar(20)",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  false
+                                                                         },
+                                                                "timestamp":  {
+                                                                                  "name":  "timestamp",
+                                                                                  "type":  "timestamp",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  false
+                                                                              },
+                                                                "created_at":  {
+                                                                                   "name":  "created_at",
+                                                                                   "type":  "timestamp",
+                                                                                   "primaryKey":  false,
+                                                                                   "notNull":  true,
+                                                                                   "default":  "now()"
+                                                                               }
+                                                            },
+                                                "indexes":  {
+
+                                                            },
+                                                "foreignKeys":  {
+
+                                                                },
+                                                "compositePrimaryKeys":  {
+
+                                                                         },
+                                                "uniqueConstraints":  {
+
+                                                                      },
+                                                "policies":  {
+
+                                                             },
+                                                "checkConstraints":  {
+
+                                                                     },
+                                                "isRLSEnabled":  false
+                                            },
+                   "public.submissions":  {
+                                              "name":  "submissions",
+                                              "schema":  "",
+                                              "columns":  {
+                                                              "id":  {
+                                                                         "name":  "id",
+                                                                         "type":  "varchar(36)",
+                                                                         "primaryKey":  true,
+                                                                         "notNull":  true
+                                                                     },
+                                                              "exam_id":  {
+                                                                              "name":  "exam_id",
+                                                                              "type":  "varchar(36)",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  true
+                                                                          },
+                                                              "student_id":  {
+                                                                                 "name":  "student_id",
+                                                                                 "type":  "varchar(36)",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  true
+                                                                             },
+                                                              "answers":  {
+                                                                              "name":  "answers",
+                                                                              "type":  "jsonb",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  false
+                                                                          },
+                                                              "score":  {
+                                                                            "name":  "score",
+                                                                            "type":  "integer",
+                                                                            "primaryKey":  false,
+                                                                            "notNull":  false
+                                                                        },
+                                                              "total_score":  {
+                                                                                  "name":  "total_score",
+                                                                                  "type":  "integer",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  false
+                                                                              },
+                                                              "submitted_at":  {
+                                                                                   "name":  "submitted_at",
+                                                                                   "type":  "timestamp",
+                                                                                   "primaryKey":  false,
+                                                                                   "notNull":  true,
+                                                                                   "default":  "now()"
+                                                                               },
+                                                              "graded_by":  {
+                                                                                "name":  "graded_by",
+                                                                                "type":  "varchar(36)",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  false
+                                                                            },
+                                                              "graded_at":  {
+                                                                                "name":  "graded_at",
+                                                                                "type":  "timestamp",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  false
+                                                                            },
+                                                              "feedback":  {
+                                                                               "name":  "feedback",
+                                                                               "type":  "text",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  false
+                                                                           },
+                                                              "created_at":  {
+                                                                                 "name":  "created_at",
+                                                                                 "type":  "timestamp",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  true,
+                                                                                 "default":  "now()"
+                                                                             }
+                                                          },
+                                              "indexes":  {
+                                                              "submissions_exam_student_unique":  {
+                                                                                                      "name":  "submissions_exam_student_unique",
+                                                                                                      "columns":  [
+                                                                                                                      {
+                                                                                                                          "expression":  "exam_id",
+                                                                                                                          "isExpression":  false,
+                                                                                                                          "asc":  true,
+                                                                                                                          "nulls":  "last"
+                                                                                                                      },
+                                                                                                                      {
+                                                                                                                          "expression":  "student_id",
+                                                                                                                          "isExpression":  false,
+                                                                                                                          "asc":  true,
+                                                                                                                          "nulls":  "last"
+                                                                                                                      }
+                                                                                                                  ],
+                                                                                                      "isUnique":  true,
+                                                                                                      "concurrently":  false,
+                                                                                                      "method":  "btree",
+                                                                                                      "with":  {
+
+                                                                                                               }
+                                                                                                  }
+                                                          },
+                                              "foreignKeys":  {
+
+                                                              },
+                                              "compositePrimaryKeys":  {
+
+                                                                       },
+                                              "uniqueConstraints":  {
+
+                                                                    },
+                                              "policies":  {
+
+                                                           },
+                                              "checkConstraints":  {
+
+                                                                   },
+                                              "isRLSEnabled":  false
+                                          },
+                   "public.lessons":  {
+                                          "name":  "lessons",
+                                          "schema":  "",
+                                          "columns":  {
+                                                          "id":  {
+                                                                     "name":  "id",
+                                                                     "type":  "varchar(36)",
+                                                                     "primaryKey":  true,
+                                                                     "notNull":  true
+                                                                 },
+                                                          "subject":  {
+                                                                          "name":  "subject",
+                                                                          "type":  "varchar(100)",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  true
+                                                                      },
+                                                          "topic":  {
+                                                                        "name":  "topic",
+                                                                        "type":  "varchar(255)",
+                                                                        "primaryKey":  false,
+                                                                        "notNull":  true
+                                                                    },
+                                                          "time":  {
+                                                                       "name":  "time",
+                                                                       "type":  "varchar(50)",
+                                                                       "primaryKey":  false,
+                                                                       "notNull":  false
+                                                                   },
+                                                          "is_live":  {
+                                                                          "name":  "is_live",
+                                                                          "type":  "boolean",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  false,
+                                                                          "default":  false
+                                                                      },
+                                                          "icon":  {
+                                                                       "name":  "icon",
+                                                                       "type":  "varchar(10)",
+                                                                       "primaryKey":  false,
+                                                                       "notNull":  false
+                                                                   },
+                                                          "icon_bg":  {
+                                                                          "name":  "icon_bg",
+                                                                          "type":  "varchar(20)",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  false
+                                                                      },
+                                                          "icon_color":  {
+                                                                             "name":  "icon_color",
+                                                                             "type":  "varchar(20)",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  false
+                                                                         },
+                                                          "created_at":  {
+                                                                             "name":  "created_at",
+                                                                             "type":  "timestamp",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  true,
+                                                                             "default":  "now()"
+                                                                         }
+                                                      },
+                                          "indexes":  {
+
+                                                      },
+                                          "foreignKeys":  {
+
+                                                          },
+                                          "compositePrimaryKeys":  {
+
+                                                                   },
+                                          "uniqueConstraints":  {
+
+                                                                },
+                                          "policies":  {
+
+                                                       },
+                                          "checkConstraints":  {
+
+                                                               },
+                                          "isRLSEnabled":  false
+                                      },
+                   "public.schemes":  {
+                                          "name":  "schemes",
+                                          "schema":  "",
+                                          "columns":  {
+                                                          "id":  {
+                                                                     "name":  "id",
+                                                                     "type":  "varchar(36)",
+                                                                     "primaryKey":  true,
+                                                                     "notNull":  true
+                                                                 },
+                                                          "subject":  {
+                                                                          "name":  "subject",
+                                                                          "type":  "varchar(100)",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  true
+                                                                      },
+                                                          "title":  {
+                                                                        "name":  "title",
+                                                                        "type":  "varchar(255)",
+                                                                        "primaryKey":  false,
+                                                                        "notNull":  true
+                                                                    },
+                                                          "description":  {
+                                                                              "name":  "description",
+                                                                              "type":  "text",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  false
+                                                                          },
+                                                          "week":  {
+                                                                       "name":  "week",
+                                                                       "type":  "varchar(10)",
+                                                                       "primaryKey":  false,
+                                                                       "notNull":  false
+                                                                   },
+                                                          "term":  {
+                                                                       "name":  "term",
+                                                                       "type":  "varchar(20)",
+                                                                       "primaryKey":  false,
+                                                                       "notNull":  false
+                                                                   },
+                                                          "class":  {
+                                                                        "name":  "class",
+                                                                        "type":  "varchar(20)",
+                                                                        "primaryKey":  false,
+                                                                        "notNull":  false
+                                                                    },
+                                                          "created_by":  {
+                                                                             "name":  "created_by",
+                                                                             "type":  "varchar(36)",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  false
+                                                                         },
+                                                          "created_at":  {
+                                                                             "name":  "created_at",
+                                                                             "type":  "timestamp",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  true,
+                                                                             "default":  "now()"
+                                                                         }
+                                                      },
+                                          "indexes":  {
+
+                                                      },
+                                          "foreignKeys":  {
+
+                                                          },
+                                          "compositePrimaryKeys":  {
+
+                                                                   },
+                                          "uniqueConstraints":  {
+
+                                                                },
+                                          "policies":  {
+
+                                                       },
+                                          "checkConstraints":  {
+
+                                                               },
+                                          "isRLSEnabled":  false
+                                      },
+                   "public.lesson_plans":  {
+                                               "name":  "lesson_plans",
+                                               "schema":  "",
+                                               "columns":  {
+                                                               "id":  {
+                                                                          "name":  "id",
+                                                                          "type":  "varchar(36)",
+                                                                          "primaryKey":  true,
+                                                                          "notNull":  true
+                                                                      },
+                                                               "subject":  {
+                                                                               "name":  "subject",
+                                                                               "type":  "varchar(100)",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  true
+                                                                           },
+                                                               "topic":  {
+                                                                             "name":  "topic",
+                                                                             "type":  "varchar(255)",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  true
+                                                                         },
+                                                               "week":  {
+                                                                            "name":  "week",
+                                                                            "type":  "varchar(10)",
+                                                                            "primaryKey":  false,
+                                                                            "notNull":  false
+                                                                        },
+                                                               "term":  {
+                                                                            "name":  "term",
+                                                                            "type":  "varchar(20)",
+                                                                            "primaryKey":  false,
+                                                                            "notNull":  false
+                                                                        },
+                                                               "class":  {
+                                                                             "name":  "class",
+                                                                             "type":  "varchar(20)",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  false
+                                                                         },
+                                                               "objectives":  {
+                                                                                  "name":  "objectives",
+                                                                                  "type":  "text",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  false
+                                                                              },
+                                                               "materials":  {
+                                                                                 "name":  "materials",
+                                                                                 "type":  "text",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  false
+                                                                             },
+                                                               "created_by":  {
+                                                                                  "name":  "created_by",
+                                                                                  "type":  "varchar(36)",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  false
+                                                                              },
+                                                               "created_at":  {
+                                                                                  "name":  "created_at",
+                                                                                  "type":  "timestamp",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  true,
+                                                                                  "default":  "now()"
+                                                                              }
+                                                           },
+                                               "indexes":  {
+
+                                                           },
+                                               "foreignKeys":  {
+
+                                                               },
+                                               "compositePrimaryKeys":  {
+
+                                                                        },
+                                               "uniqueConstraints":  {
+
+                                                                     },
+                                               "policies":  {
+
+                                                            },
+                                               "checkConstraints":  {
+
+                                                                    },
+                                               "isRLSEnabled":  false
+                                           },
+                   "public.midterm_results":  {
+                                                  "name":  "midterm_results",
+                                                  "schema":  "",
+                                                  "columns":  {
+                                                                  "id":  {
+                                                                             "name":  "id",
+                                                                             "type":  "varchar(36)",
+                                                                             "primaryKey":  true,
+                                                                             "notNull":  true
+                                                                         },
+                                                                  "student_id":  {
+                                                                                     "name":  "student_id",
+                                                                                     "type":  "varchar(36)",
+                                                                                     "primaryKey":  false,
+                                                                                     "notNull":  true
+                                                                                 },
+                                                                  "student_name":  {
+                                                                                       "name":  "student_name",
+                                                                                       "type":  "varchar(255)",
+                                                                                       "primaryKey":  false,
+                                                                                       "notNull":  false
+                                                                                   },
+                                                                  "class":  {
+                                                                                "name":  "class",
+                                                                                "type":  "varchar(20)",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  true
+                                                                            },
+                                                                  "subject":  {
+                                                                                  "name":  "subject",
+                                                                                  "type":  "varchar(100)",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  true
+                                                                              },
+                                                                  "ca_score":  {
+                                                                                   "name":  "ca_score",
+                                                                                   "type":  "integer",
+                                                                                   "primaryKey":  false,
+                                                                                   "notNull":  false
+                                                                               },
+                                                                  "exam_score":  {
+                                                                                     "name":  "exam_score",
+                                                                                     "type":  "integer",
+                                                                                     "primaryKey":  false,
+                                                                                     "notNull":  false
+                                                                                 },
+                                                                  "total_score":  {
+                                                                                      "name":  "total_score",
+                                                                                      "type":  "integer",
+                                                                                      "primaryKey":  false,
+                                                                                      "notNull":  false
+                                                                                  },
+                                                                  "grade":  {
+                                                                                "name":  "grade",
+                                                                                "type":  "varchar(5)",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  false
+                                                                            },
+                                                                  "term":  {
+                                                                               "name":  "term",
+                                                                               "type":  "varchar(20)",
+                                                                               "primaryKey":  false,
+                                                                               "notNull":  false
+                                                                           },
+                                                                  "session":  {
+                                                                                  "name":  "session",
+                                                                                  "type":  "varchar(20)",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  false
+                                                                              },
+                                                                  "created_at":  {
+                                                                                     "name":  "created_at",
+                                                                                     "type":  "timestamp",
+                                                                                     "primaryKey":  false,
+                                                                                     "notNull":  true,
+                                                                                     "default":  "now()"
+                                                                                 }
+                                                              },
+                                                  "indexes":  {
+
+                                                              },
+                                                  "foreignKeys":  {
+
+                                                                  },
+                                                  "compositePrimaryKeys":  {
+
+                                                                           },
+                                                  "uniqueConstraints":  {
+
+                                                                        },
+                                                  "policies":  {
+
+                                                               },
+                                                  "checkConstraints":  {
+
+                                                                       },
+                                                  "isRLSEnabled":  false
+                                              },
+                   "public.reports":  {
+                                          "name":  "reports",
+                                          "schema":  "",
+                                          "columns":  {
+                                                          "id":  {
+                                                                     "name":  "id",
+                                                                     "type":  "varchar(36)",
+                                                                     "primaryKey":  true,
+                                                                     "notNull":  true
+                                                                 },
+                                                          "user_id":  {
+                                                                          "name":  "user_id",
+                                                                          "type":  "varchar(36)",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  true
+                                                                      },
+                                                          "user_name":  {
+                                                                            "name":  "user_name",
+                                                                            "type":  "varchar(255)",
+                                                                            "primaryKey":  false,
+                                                                            "notNull":  false
+                                                                        },
+                                                          "report_category":  {
+                                                                                  "name":  "report_category",
+                                                                                  "type":  "report_category",
+                                                                                  "typeSchema":  "public",
+                                                                                  "primaryKey":  false,
+                                                                                  "notNull":  true
+                                                                              },
+                                                          "description":  {
+                                                                              "name":  "description",
+                                                                              "type":  "text",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  true
+                                                                          },
+                                                          "read":  {
+                                                                       "name":  "read",
+                                                                       "type":  "boolean",
+                                                                       "primaryKey":  false,
+                                                                       "notNull":  false,
+                                                                       "default":  false
+                                                                   },
+                                                          "status":  {
+                                                                         "name":  "status",
+                                                                         "type":  "varchar(20)",
+                                                                         "primaryKey":  false,
+                                                                         "notNull":  false,
+                                                                         "default":  "\u0027pending\u0027"
+                                                                     },
+                                                          "date":  {
+                                                                       "name":  "date",
+                                                                       "type":  "varchar(20)",
+                                                                       "primaryKey":  false,
+                                                                       "notNull":  false
+                                                                   },
+                                                          "created_at":  {
+                                                                             "name":  "created_at",
+                                                                             "type":  "timestamp",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  true,
+                                                                             "default":  "now()"
+                                                                         }
+                                                      },
+                                          "indexes":  {
+
+                                                      },
+                                          "foreignKeys":  {
+
+                                                          },
+                                          "compositePrimaryKeys":  {
+
+                                                                   },
+                                          "uniqueConstraints":  {
+
+                                                                },
+                                          "policies":  {
+
+                                                       },
+                                          "checkConstraints":  {
+
+                                                               },
+                                          "isRLSEnabled":  false
+                                      },
+                   "public.backups":  {
+                                          "name":  "backups",
+                                          "schema":  "",
+                                          "columns":  {
+                                                          "id":  {
+                                                                     "name":  "id",
+                                                                     "type":  "varchar(36)",
+                                                                     "primaryKey":  true,
+                                                                     "notNull":  true
+                                                                 },
+                                                          "name":  {
+                                                                       "name":  "name",
+                                                                       "type":  "varchar(255)",
+                                                                       "primaryKey":  false,
+                                                                       "notNull":  true
+                                                                   },
+                                                          "description":  {
+                                                                              "name":  "description",
+                                                                              "type":  "text",
+                                                                              "primaryKey":  false,
+                                                                              "notNull":  false
+                                                                          },
+                                                          "size":  {
+                                                                       "name":  "size",
+                                                                       "type":  "varchar(50)",
+                                                                       "primaryKey":  false,
+                                                                       "notNull":  true,
+                                                                       "default":  "\u00270 MB\u0027"
+                                                                   },
+                                                          "type":  {
+                                                                       "name":  "type",
+                                                                       "type":  "varchar(50)",
+                                                                       "primaryKey":  false,
+                                                                       "notNull":  true,
+                                                                       "default":  "\u0027manual\u0027"
+                                                                   },
+                                                          "metadata":  {
+                                                                           "name":  "metadata",
+                                                                           "type":  "jsonb",
+                                                                           "primaryKey":  false,
+                                                                           "notNull":  false
+                                                                       },
+                                                          "created_at":  {
+                                                                             "name":  "created_at",
+                                                                             "type":  "timestamp",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  true,
+                                                                             "default":  "now()"
+                                                                         },
+                                                          "updated_at":  {
+                                                                             "name":  "updated_at",
+                                                                             "type":  "timestamp",
+                                                                             "primaryKey":  false,
+                                                                             "notNull":  true,
+                                                                             "default":  "now()"
+                                                                         }
+                                                      },
+                                          "indexes":  {
+
+                                                      },
+                                          "foreignKeys":  {
+
+                                                          },
+                                          "compositePrimaryKeys":  {
+
+                                                                   },
+                                          "uniqueConstraints":  {
+
+                                                                },
+                                          "policies":  {
+
+                                                       },
+                                          "checkConstraints":  {
+
+                                                               },
+                                          "isRLSEnabled":  false
+                                      },
+                   "public.platform_settings":  {
+                                                    "name":  "platform_settings",
+                                                    "schema":  "",
+                                                    "columns":  {
+                                                                    "id":  {
+                                                                               "name":  "id",
+                                                                               "type":  "varchar(36)",
+                                                                               "primaryKey":  true,
+                                                                               "notNull":  true
+                                                                           },
+                                                                    "platform_name":  {
+                                                                                          "name":  "platform_name",
+                                                                                          "type":  "varchar(255)",
+                                                                                          "primaryKey":  false,
+                                                                                          "notNull":  true,
+                                                                                          "default":  "\u0027Yeshua Educational Platform\u0027"
+                                                                                      },
+                                                                    "support_email":  {
+                                                                                          "name":  "support_email",
+                                                                                          "type":  "varchar(255)",
+                                                                                          "primaryKey":  false,
+                                                                                          "notNull":  true,
+                                                                                          "default":  "\u0027support@yems.local\u0027"
+                                                                                      },
+                                                                    "max_users_per_institution":  {
+                                                                                                      "name":  "max_users_per_institution",
+                                                                                                      "type":  "integer",
+                                                                                                      "primaryKey":  false,
+                                                                                                      "notNull":  true,
+                                                                                                      "default":  1000
+                                                                                                  },
+                                                                    "session_timeout":  {
+                                                                                            "name":  "session_timeout",
+                                                                                            "type":  "integer",
+                                                                                            "primaryKey":  false,
+                                                                                            "notNull":  true,
+                                                                                            "default":  60
+                                                                                        },
+                                                                    "enable_2fa":  {
+                                                                                       "name":  "enable_2fa",
+                                                                                       "type":  "boolean",
+                                                                                       "primaryKey":  false,
+                                                                                       "notNull":  true,
+                                                                                       "default":  false
+                                                                                   },
+                                                                    "force_password_change":  {
+                                                                                                  "name":  "force_password_change",
+                                                                                                  "type":  "boolean",
+                                                                                                  "primaryKey":  false,
+                                                                                                  "notNull":  true,
+                                                                                                  "default":  true
+                                                                                              },
+                                                                    "created_at":  {
+                                                                                       "name":  "created_at",
+                                                                                       "type":  "timestamp",
+                                                                                       "primaryKey":  false,
+                                                                                       "notNull":  true,
+                                                                                       "default":  "now()"
+                                                                                   },
+                                                                    "updated_at":  {
+                                                                                       "name":  "updated_at",
+                                                                                       "type":  "timestamp",
+                                                                                       "primaryKey":  false,
+                                                                                       "notNull":  true,
+                                                                                       "default":  "now()"
+                                                                                   }
+                                                                },
+                                                    "indexes":  {
+
+                                                                },
+                                                    "foreignKeys":  {
+
+                                                                    },
+                                                    "compositePrimaryKeys":  {
+
+                                                                             },
+                                                    "uniqueConstraints":  {
+
+                                                                          },
+                                                    "policies":  {
+
+                                                                 },
+                                                    "checkConstraints":  {
+
+                                                                         },
+                                                    "isRLSEnabled":  false
+                                                },
+                   "public.rbac_roles":  {
+                                             "name":  "rbac_roles",
+                                             "schema":  "",
+                                             "columns":  {
+                                                             "id":  {
+                                                                        "name":  "id",
+                                                                        "type":  "varchar(36)",
+                                                                        "primaryKey":  true,
+                                                                        "notNull":  true
+                                                                    },
+                                                             "key":  {
+                                                                         "name":  "key",
+                                                                         "type":  "varchar(100)",
+                                                                         "primaryKey":  false,
+                                                                         "notNull":  true
+                                                                     },
+                                                             "name":  {
+                                                                          "name":  "name",
+                                                                          "type":  "varchar(150)",
+                                                                          "primaryKey":  false,
+                                                                          "notNull":  true
+                                                                      },
+                                                             "description":  {
+                                                                                 "name":  "description",
+                                                                                 "type":  "text",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  false
+                                                                             },
+                                                             "permissions":  {
+                                                                                 "name":  "permissions",
+                                                                                 "type":  "jsonb",
+                                                                                 "primaryKey":  false,
+                                                                                 "notNull":  true
+                                                                             },
+                                                             "created_at":  {
+                                                                                "name":  "created_at",
+                                                                                "type":  "timestamp",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  true,
+                                                                                "default":  "now()"
+                                                                            },
+                                                             "updated_at":  {
+                                                                                "name":  "updated_at",
+                                                                                "type":  "timestamp",
+                                                                                "primaryKey":  false,
+                                                                                "notNull":  true,
+                                                                                "default":  "now()"
+                                                                            }
+                                                         },
+                                             "indexes":  {
+
+                                                         },
+                                             "foreignKeys":  {
+
+                                                             },
+                                             "compositePrimaryKeys":  {
+
+                                                                      },
+                                             "uniqueConstraints":  {
+                                                                       "rbac_roles_key_unique":  {
+                                                                                                     "name":  "rbac_roles_key_unique",
+                                                                                                     "nullsNotDistinct":  false,
+                                                                                                     "columns":  [
+                                                                                                                     "key"
+                                                                                                                 ]
+                                                                                                 }
+                                                                   },
+                                             "policies":  {
+
+                                                          },
+                                             "checkConstraints":  {
+
+                                                                  },
+                                             "isRLSEnabled":  false
+                                         }
+               },
+    "enums":  {
+                  "public.admission_status":  {
+                                                  "name":  "admission_status",
+                                                  "schema":  "public",
+                                                  "values":  [
+                                                                 "pending",
+                                                                 "approved",
+                                                                 "rejected"
+                                                             ]
+                                              },
+                  "public.due_class":  {
+                                           "name":  "due_class",
+                                           "schema":  "public",
+                                           "values":  [
+                                                          "due-today",
+                                                          "due-days",
+                                                          "overdue"
+                                                      ]
+                                       },
+                  "public.status":  {
+                                        "name":  "status",
+                                        "schema":  "public",
+                                        "values":  [
+                                                       "active",
+                                                       "draft",
+                                                       "archived"
+                                                   ]
+                                    },
+                  "public.exam_format":  {
+                                             "name":  "exam_format",
+                                             "schema":  "public",
+                                             "values":  [
+                                                            "mcq",
+                                                            "theory",
+                                                            "both"
+                                                        ]
+                                         },
+                  "public.exam_status":  {
+                                             "name":  "exam_status",
+                                             "schema":  "public",
+                                             "values":  [
+                                                            "not-started",
+                                                            "upcoming",
+                                                            "active",
+                                                            "completed"
+                                                        ]
+                                         },
+                  "public.exam_type":  {
+                                           "name":  "exam_type",
+                                           "schema":  "public",
+                                           "values":  [
+                                                          "quiz",
+                                                          "midterm",
+                                                          "final",
+                                                          "practice"
+                                                      ]
+                                       },
+                  "public.role":  {
+                                      "name":  "role",
+                                      "schema":  "public",
+                                      "values":  [
+                                                     "student",
+                                                     "teacher",
+                                                     "admin",
+                                                     "superadmin",
+                                                     "accountant",
+                                                     "technician",
+                                                     "principal",
+                                                     "hod",
+                                                     "parent"
+                                                 ]
+                                  },
+                  "public.notif_type":  {
+                                            "name":  "notif_type",
+                                            "schema":  "public",
+                                            "values":  [
+                                                           "note",
+                                                           "exam",
+                                                           "assignment",
+                                                           "result",
+                                                           "system"
+                                                       ]
+                                        },
+                  "public.report_category":  {
+                                                 "name":  "report_category",
+                                                 "schema":  "public",
+                                                 "values":  [
+                                                                "feedback",
+                                                                "bug",
+                                                                "suggestion",
+                                                                "complaint",
+                                                                "emergency"
+                                                            ]
+                                             }
+              },
+    "schemas":  {
+
+                },
+    "sequences":  {
+
+                  },
+    "roles":  {
+
+              },
+    "policies":  {
+
+                 },
+    "views":  {
+
+              },
+    "_meta":  {
+                  "columns":  {
+
+                              },
+                  "schemas":  {
+
+                              },
+                  "tables":  {
+
+                             }
+              }
+}

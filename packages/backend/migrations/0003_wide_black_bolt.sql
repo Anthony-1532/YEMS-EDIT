@@ -1,0 +1,1 @@
+ALTER TABLE "exams" ADD COLUMN "class" varchar(50);

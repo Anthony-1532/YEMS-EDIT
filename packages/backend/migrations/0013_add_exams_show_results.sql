@@ -1,0 +1,1 @@
+ALTER TABLE "exams" ADD COLUMN "show_results" boolean DEFAULT false NOT NULL;

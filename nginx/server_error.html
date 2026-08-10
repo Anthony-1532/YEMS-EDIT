@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Error</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #1a0508 0%, #070102 100%);
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            padding: 3rem 2.5rem;
+            max-width: 480px;
+            background: rgba(88, 17, 26, 0.08);
+            border: 1px solid rgba(88, 17, 26, 0.2);
+            border-radius: 28px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 40px rgba(88, 17, 26, 0.15);
+            animation: fadeIn 0.8s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .icon-box {
+            width: 84px;
+            height: 84px;
+            margin: 0 auto 1.75rem;
+            background: rgba(88, 17, 26, 0.25);
+            border: 2px solid rgba(140, 36, 54, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff4d6d;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(88, 17, 26, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(88, 17, 26, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(88, 17, 26, 0); }
+        }
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: #ff4d6d;
+            margin-bottom: 0.25rem;
+            letter-spacing: -2px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #f8f1f2;
+            letter-spacing: -0.5px;
+        }
+        p {
+            font-size: 0.95rem;
+            color: #d4c4c6;
+            line-height: 1.6;
+            margin-bottom: 2.25rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.85rem 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #ffffff;
+            background: #58111A;
+            border-radius: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(140, 36, 54, 0.4);
+        }
+        .btn:hover {
+            background: #8c2436;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(88, 17, 26, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="12" x2="2" y2="12"></line>
+                <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path>
+                <line x1="6" y1="16" x2="6.01" y2="16"></line>
+                <line x1="10" y1="16" x2="10.01" y2="16"></line>
+            </svg>
+        </div>
+        <h1>50x</h1>
+        <h2>Server Error</h2>
+        <p>Something went wrong on our servers. The connection might have timed out, the backend could be temporarily offline, or the service is undergoing scheduled maintenance.</p>
+        <a href="javascript:location.reload()" class="btn">Try Reconnecting</a>
+    </div>
+</body>
+</html>

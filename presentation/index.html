@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YEMS Administrative Presentation</title>
+    <meta name="description" content="Administrative presentation for the Yeshua Educational Management System.">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <link rel="stylesheet" href="./styles.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="./script.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#slides">Skip to slides</a>
+
+    <header class="topbar" aria-label="Presentation controls">
+      <div class="brand-lockup">
+        <span class="brand-mark" aria-hidden="true">Y</span>
+        <div>
+          <p class="eyebrow">Administrative Briefing</p>
+          <strong>YEMS</strong>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-button" type="button" data-action="overview" aria-label="Show slide overview">
+          <i data-lucide="layout-grid"></i>
+          <span>Overview</span>
+        </button>
+        <button class="icon-button" type="button" data-action="print" aria-label="Print or save presentation">
+          <i data-lucide="printer"></i>
+          <span>Print</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="slides" class="deck" aria-live="polite">
+
+      <!-- SLIDE 1: Title -->
+      <section class="slide title-slide is-active" data-title="Opening">
+        <div class="slide-inner title-layout">
+          <div class="title-copy">
+            <p class="kicker">Yeshua Educational Management System</p>
+            <h1>YEMS Administrative Presentation</h1>
+            <p class="lead">
+              A management overview of the school platform — what has been
+              built, how it runs, and where it goes next.
+            </p>
+          </div>
+          <div class="title-panel motion-item">
+            <p>Delivered by</p>
+            <strong>Development Team</strong>
+            <span>Current State Review</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 2: Agenda -->
+      <section class="slide" data-title="Agenda">
+        <div class="slide-inner two-column">
+          <div>
+            <p class="kicker">Agenda</p>
+            <h2>What this briefing covers</h2>
+            <p class="lead">
+              A focused review of the system's current state, how it is
+              set up, and the team that built it.
+            </p>
+          </div>
+          <div class="agenda-list">
+            <article class="agenda-item motion-item">
+              <span>01</span>
+              <strong>What YEMS does for the school</strong>
+              <p>The core value and who benefits from it.</p>
+            </article>
+            <article class="agenda-item motion-item">
+              <span>02</span>
+              <strong>What is built and ready</strong>
+              <p>Real numbers on what the system covers today.</p>
+            </article>
+            <article class="agenda-item motion-item">
+              <span>03</span>
+              <strong>How the system runs</strong>
+              <p>The setup that keeps it fast and reliable for 500 students.</p>
+            </article>
+            <article class="agenda-item motion-item">
+              <span>04</span>
+              <strong>What is not built yet</strong>
+              <p>The features that still need work and the plan to build them.</p>
+            </article>
+            <article class="agenda-item motion-item">
+              <span>05</span>
+              <strong>The team</strong>
+              <p>Who built it and what each person delivered.</p>
+            </article>
+            <article class="agenda-item motion-item">
+              <span>06</span>
+              <strong>What comes next</strong>
+              <p>The roadmap from current state to full production.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 3: Project Overview -->
+      <section class="slide" data-title="Project Overview">
+        <div class="slide-inner split-hero">
+          <div>
+            <p class="kicker">Project Overview</p>
+            <h2>One platform for the entire school</h2>
+            <p class="lead">
+              YEMS is a school management system built for Yeshua High School.
+              It handles academics, administration, finance, and communication
+              in a single place.
+            </p>
+            <div class="statement motion-item">
+              <i data-lucide="building-2"></i>
+              <p>
+                Instead of scattered paperwork, separate spreadsheets, and
+                disconnected tools — everything runs through one system that
+                works on the school's own network. No internet required.
+              </p>
+            </div>
+          </div>
+          <div class="summary-stack">
+            <article class="mini-card motion-item">
+              <span>For leadership</span>
+              <strong>Complete oversight</strong>
+              <p>See school activity, reports, and progress from one place.</p>
+            </article>
+            <article class="mini-card motion-item">
+              <span>For staff</span>
+              <strong>Less repetitive work</strong>
+              <p>Manage lessons, assignments, results, and notices from one portal.</p>
+            </article>
+            <article class="mini-card motion-item">
+              <span>For students</span>
+              <strong>Everything in one place</strong>
+              <p>Access notes, assignments, schedules, exams, and results.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 4: At a Glance -->
+      <section class="slide" data-title="At a Glance">
+        <div class="slide-inner">
+          <p class="kicker">At a Glance</p>
+          <h2>What the system covers</h2>
+          <p class="lead">
+            These numbers show how much of the school's daily work is
+            handled by YEMS. Each number represents a real part of the system.
+          </p>
+          <div class="metric-grid">
+            <article class="metric motion-item">
+              <span class="metric-value" data-count="7">0</span>
+              <strong>User roles</strong>
+              <p>Superadmin, Admin, Principal, HOD, Accountant, Teacher, Student — each with their own workspace.</p>
+            </article>
+            <article class="metric motion-item">
+              <span class="metric-value" data-count="21">0</span>
+              <strong>Record types</strong>
+              <p>Users, exams, notes, assignments, lessons, results, bills, payments, admissions, and more.</p>
+            </article>
+            <article class="metric motion-item">
+              <span class="metric-value" data-count="42">0</span>
+              <strong>Pages built</strong>
+              <p>Ready-to-use screens for every role — dashboards, forms, reports, and settings.</p>
+            </article>
+            <article class="metric motion-item">
+              <span class="metric-value" data-count="50" data-suffix="+">0</span>
+              <strong>Functions</strong>
+              <p>Actions the system can perform — from login to grading to fee tracking.</p>
+            </article>
+          </div>
+          <div class="management-note motion-item">
+            <strong>What this means</strong>
+            <p>
+              YEMS is not a simple website. It is a full management platform
+              with separate workspaces for every school role, connected to a
+              real database, with file storage and background processing.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 5: What's Built -->
+      <section class="slide" data-title="What's Built">
+        <div class="slide-inner">
+          <p class="kicker">Current State</p>
+          <h2>What is built and working</h2>
+          <div class="feature-grid">
+            <article class="feature-card motion-item">
+              <i data-lucide="clipboard-check"></i>
+              <strong>Examinations</strong>
+              <p>Create quizzes, midterms, and finals. Student submissions are graded automatically.</p>
+            </article>
+            <article class="feature-card motion-item">
+              <i data-lucide="book-open-check"></i>
+              <strong>Study Materials</strong>
+              <p>Teachers upload notes by subject. Students access them from their portal.</p>
+            </article>
+            <article class="feature-card motion-item">
+              <i data-lucide="file-check-2"></i>
+              <strong>Assignments</strong>
+              <p>Create tasks, set deadlines, students submit, teachers grade — all tracked.</p>
+            </article>
+            <article class="feature-card motion-item">
+              <i data-lucide="calendar-days"></i>
+              <strong>Lesson Planning</strong>
+              <p>Manage class schedules, timetables, schemes of work, and lesson plans.</p>
+            </article>
+            <article class="feature-card motion-item">
+              <i data-lucide="chart-no-axes-combined"></i>
+              <strong>Results &amp; Reports</strong>
+              <p>Track exam results, midterm results, and generate progress reports.</p>
+            </article>
+            <article class="feature-card motion-item">
+              <i data-lucide="banknote"></i>
+              <strong>Finance</strong>
+              <p>Billing, payments, and invoices — managed by the accountant with a full record.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 6: Portals -->
+      <section class="slide" data-title="Portals">
+        <div class="slide-inner">
+          <p class="kicker">User Portals</p>
+          <h2>Every role has its own workspace</h2>
+          <p class="lead">
+            Each type of user sees only what matters to them. No clutter,
+            no confusion — just the tools they need.
+          </p>
+          <div class="role-map">
+            <article class="role-card high motion-item">
+              <span>School-wide</span>
+              <strong>Superadmin</strong>
+              <p>Full access to everything. Manages the entire system.</p>
+            </article>
+            <article class="role-card motion-item">
+              <span>Operations</span>
+              <strong>Admin</strong>
+              <p>Manages users, subjects, admissions, classes, and school settings.</p>
+            </article>
+            <article class="role-card motion-item">
+              <span>Academic</span>
+              <strong>Principal</strong>
+              <p>Views reports, supervises teachers, reviews student records.</p>
+            </article>
+            <article class="role-card motion-item">
+              <span>Finance</span>
+              <strong>Accountant</strong>
+              <p>Handles billing, payments, fees, and financial reports.</p>
+            </article>
+            <article class="role-card motion-item">
+              <span>Department</span>
+              <strong>HOD</strong>
+              <p>Manages department teachers, subjects, and department reports.</p>
+            </article>
+            <article class="role-card motion-item">
+              <span>Classroom</span>
+              <strong>Teacher</strong>
+              <p>Creates assignments, grades work, uploads notes, manages lessons.</p>
+            </article>
+            <article class="role-card student motion-item">
+              <span>Learner</span>
+              <strong>Student</strong>
+              <p>Views assignments, takes exams, accesses notes, checks results.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 7: Security -->
+      <section class="slide" data-title="Security">
+        <div class="slide-inner">
+          <p class="kicker">Security</p>
+          <h2>How school information is protected</h2>
+          <div class="safety-layout">
+            <article class="safety-item motion-item">
+              <i data-lucide="key-round"></i>
+              <strong>Secure Sign-In</strong>
+              <p>Every user logs in with a password. Sessions expire after 15 minutes and must be renewed.</p>
+            </article>
+            <article class="safety-item motion-item">
+              <i data-lucide="shield-check"></i>
+              <strong>Role-Based Access</strong>
+              <p>Each person sees only what their role allows. A student cannot see admin settings.</p>
+            </article>
+            <article class="safety-item motion-item">
+              <i data-lucide="lock-keyhole"></i>
+              <strong>Login Protection</strong>
+              <p>5 wrong passwords locks the account for 15 minutes. Too many requests are slowed down.</p>
+            </article>
+            <article class="safety-item motion-item">
+              <i data-lucide="history"></i>
+              <strong>Activity History</strong>
+              <p>Every important action is recorded. Leadership can review who did what and when.</p>
+            </article>
+          </div>
+          <div class="comparison-strip motion-item">
+            <span>In place:</span>
+            <strong>Secure login, role-based access, login lockout, request limits, and full activity history.</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 8: Architecture -->
+      <section class="slide" data-title="Architecture">
+        <div class="slide-inner">
+          <p class="kicker">How It Runs</p>
+          <h2>Three computers, one system</h2>
+          <p class="lead">
+            The system is spread across three dedicated machines. Each one
+            handles a specific job. This keeps things fast and allows 500
+            students to use it at the same time.
+          </p>
+          <div class="metric-grid">
+            <article class="metric motion-item">
+              <span class="metric-value" style="font-size: 2.2rem;">PC1</span>
+              <strong>The Application — Linux</strong>
+              <p>Runs the website and the system logic. This is what processes every request from users.</p>
+            </article>
+            <article class="metric motion-item">
+              <span class="metric-value" style="font-size: 2.2rem;">PC2</span>
+              <strong>The Data Room — Windows</strong>
+              <p>Holds the database, file storage, and background task queue. All school records live here.</p>
+            </article>
+            <article class="metric motion-item">
+              <span class="metric-value" style="font-size: 2.2rem;">PC3</span>
+              <strong>The Front Desk — Windows</strong>
+              <p>Receives all traffic from users and directs it to the right place. Keeps a log of every visit.</p>
+            </article>
+            <article class="metric motion-item">
+              <span class="metric-value" style="font-size: 1.6rem;">LAN</span>
+              <strong>Local Network Only</strong>
+              <p>No internet needed. The system runs entirely inside the school. Users type a simple address.</p>
+            </article>
+          </div>
+          <div class="management-note motion-item">
+            <strong>How a request flows</strong>
+            <p>
+              A student opens the website → PC3 receives it → PC3 sends it
+              to PC1 → PC1 checks PC2 for the right data → response goes
+              back to the student. The whole thing happens in milliseconds.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 9: Deployment -->
+      <section class="slide" data-title="Deployment">
+        <div class="slide-inner two-column">
+          <div>
+            <p class="kicker">Deployment Plan</p>
+            <h2>Getting it running in 3 hours</h2>
+            <p class="lead">
+              The setup follows a step-by-step plan. Each step is checked
+              before moving to the next. No guesswork.
+            </p>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item motion-item">
+              <span>Step 1</span>
+              <strong>Connect the computers (15 min)</strong>
+              <p>Make sure all three PCs can talk to each other on the school network.</p>
+            </article>
+            <article class="timeline-item motion-item">
+              <span>Step 2</span>
+              <strong>Set up the data room (75 min)</strong>
+              <p>Install the database, file storage, and task queue on PC2. Lock it down.</p>
+            </article>
+            <article class="timeline-item motion-item">
+              <span>Step 3</span>
+              <strong>Set up the front desk (15 min)</strong>
+              <p>Install the traffic director on PC3. Point it at PC1.</p>
+            </article>
+            <article class="timeline-item motion-item">
+              <span>Step 4</span>
+              <strong>Set up the application (30 min)</strong>
+              <p>Connect PC1 to PC2. Start the website and system logic.</p>
+            </article>
+            <article class="timeline-item motion-item">
+              <span>Step 5</span>
+              <strong>Test everything (30 min)</strong>
+              <p>Log in, create a user, upload a file, run a test exam. Confirm it all works.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 10: What's Not Built Yet -->
+      <section class="slide" data-title="Not Built Yet">
+        <div class="slide-inner">
+          <p class="kicker">Not Built Yet</p>
+          <h2>What still needs work</h2>
+          <p class="lead">
+            The system is functional, but these features are either
+            incomplete or not started. This is what the next phase addresses.
+          </p>
+          <div class="limit-grid">
+            <article class="limit-card motion-item">
+              <strong>Auto-grading uses sample scores</strong>
+              <p>The exam grading system runs, but it assigns random scores instead of checking answers. Real answer-checking logic is needed.</p>
+            </article>
+            <article class="limit-card motion-item">
+              <strong>Device tracking not started</strong>
+              <p>The technician portal cannot yet track which devices are connected to the system or monitor their status.</p>
+            </article>
+            <article class="limit-card motion-item">
+              <strong>Alert system not started</strong>
+              <p>There is no way to send alerts when something goes wrong — like a server going offline or a disk filling up.</p>
+            </article>
+            <article class="limit-card motion-item">
+              <strong>No live messaging</strong>
+              <p>Announcements work, but teachers and students cannot send messages to each other in real time.</p>
+            </article>
+            <article class="limit-card motion-item">
+              <strong>No email service connected</strong>
+              <p>The system can format emails, but it is not connected to a real email service to actually send them.</p>
+            </article>
+            <article class="limit-card motion-item">
+              <strong>No automated backups</strong>
+              <p>Database backups must be done manually. There is no automatic daily backup or restore testing.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 11: Phase 0.2.0 Roadmap -->
+      <section class="slide" data-title="Phase 0.2.0">
+        <div class="slide-inner split-hero">
+          <div>
+            <p class="kicker">Next Release</p>
+            <h2>Phase 0.2.0 — what comes next</h2>
+            <p class="lead">
+              The next version of YEMS focuses on fixing what is incomplete
+              and adding the features that matter most for daily school use.
+            </p>
+            <div class="management-note motion-item">
+              <strong>Timeline</strong>
+              <p>
+                Phase 0.2.0 is planned for completion within 4 to 6 weeks
+                after the initial deployment. Each feature is built, tested,
+                and reviewed before moving to the next.
+              </p>
+            </div>
+          </div>
+          <div class="finance-board motion-item">
+            <div class="finance-row">
+              <span>Week 1–2</span>
+              <strong>Real exam grading + answer checking</strong>
+            </div>
+            <div class="finance-row">
+              <span>Week 2–3</span>
+              <strong>Device tracking for technicians</strong>
+            </div>
+            <div class="finance-row">
+              <span>Week 3–4</span>
+              <strong>Alert system for server health</strong>
+            </div>
+            <div class="finance-row">
+              <span>Week 4–5</span>
+              <strong>Email notifications + password reset</strong>
+            </div>
+            <div class="finance-row">
+              <span>Week 5–6</span>
+              <strong>Automated daily backups + restore test</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 12: Known Limits -->
+      <section class="slide" data-title="Known Limits">
+        <div class="slide-inner">
+          <p class="kicker">Known Limits</p>
+          <h2>Things to keep in mind</h2>
+          <div class="limit-grid">
+            <article class="limit-card motion-item">
+              <strong>No mobile app yet</strong>
+              <p>Students and teachers use it through a web browser on their phone. A dedicated app is planned for a later phase.</p>
+            </article>
+            <article class="limit-card motion-item">
+              <strong>Reports are basic</strong>
+              <p>The system can generate simple reports. More detailed analytics, charts, and custom report formats are needed.</p>
+            </article>
+            <article class="limit-card motion-item">
+              <strong>Needs load testing</strong>
+              <p>The system should be tested with 500 students using it at the same time before full school-wide rollout.</p>
+            </article>
+            <article class="limit-card motion-item">
+              <strong>No external payment links</strong>
+              <p>Fees are tracked manually. Online payment integration (bank transfer, card) is a future addition.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 13: Team -->
+      <section class="slide" data-title="Team">
+        <div class="slide-inner">
+          <p class="kicker">The Team</p>
+          <h2>Who built YEMS</h2>
+          <div class="team-grid">
+            <article class="team-card motion-item">
+              <div class="team-avatar" style="background: var(--maroon);">IO</div>
+              <span>Project Leadership</span>
+              <strong>Ikeola Ayomide</strong>
+              <p>Planning, documentation, stakeholder updates, milestones, and final review.</p>
+            </article>
+            <article class="team-card motion-item">
+              <div class="team-avatar" style="background: var(--blue);">OA</div>
+              <span>Project Leadership</span>
+              <strong>Ochefu Anthony</strong>
+              <p>System planning, team coordination, quality checks, and launch preparation.</p>
+            </article>
+            <article class="team-card motion-item">
+              <div class="team-avatar" style="background: var(--ink);">DO</div>
+              <span>Senior Principal Engineer</span>
+              <strong>Damilare Osibanjo</strong>
+              <p>Full-stack development — frontend, backend, database design, authentication, infrastructure setup, and deployment.</p>
+            </article>
+            <article class="team-card motion-item">
+              <div class="team-avatar" style="background: var(--green);">MD</div>
+              <span>Design &amp; Interface</span>
+              <strong>Mohie Daniel</strong>
+              <p>Visual design, page layouts, dashboards, and how the system looks and feels.</p>
+            </article>
+            <article class="team-card motion-item">
+              <div class="team-avatar" style="background: var(--amber);">FE</div>
+              <span>Design &amp; Interface</span>
+              <strong>Fawehinmi Erioluwa</strong>
+              <p>Admin and student portals, forms, tables, and how users interact with the system.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 14: What's Next -->
+      <section class="slide" data-title="What's Next">
+        <div class="slide-inner">
+          <p class="kicker">After Phase 0.2.0</p>
+          <h2>The bigger picture</h2>
+          <p class="lead">
+            Once the core features are solid, the system can grow. These
+            are the longer-term goals that expand what YEMS can do.
+          </p>
+          <div class="roadmap">
+            <article class="roadmap-step motion-item">
+              <span>Phase 0.3.0</span>
+              <strong>Live messaging and notifications</strong>
+              <p>Real-time chat between teachers and students. Push notifications for deadlines and announcements.</p>
+            </article>
+            <article class="roadmap-step motion-item">
+              <span>Phase 0.4.0</span>
+              <strong>Mobile-friendly experience</strong>
+              <p>Optimise every screen for phone use. Consider a lightweight mobile app for students.</p>
+            </article>
+            <article class="roadmap-step motion-item">
+              <span>Phase 0.5.0</span>
+              <strong>Advanced reports and analytics</strong>
+              <p>Grade trends, class performance charts, fee collection summaries, and custom report builder.</p>
+            </article>
+            <article class="roadmap-step motion-item">
+              <span>Phase 1.0.0</span>
+              <strong>Full production release</strong>
+              <p>All features complete. Load tested. Backed up. Ready for school-wide daily use.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 15: Closing -->
+      <section class="slide closing-slide" data-title="Closing">
+        <div class="slide-inner closing-layout">
+          <div>
+            <p class="kicker">Summary</p>
+            <h2>YEMS is built and ready for the next step</h2>
+            <p class="lead">
+              The platform is functional. The setup is planned. The team
+              is ready. The next move is deployment, followed by the
+              features that make it complete.
+            </p>
+            <p class="closing-note">
+              <span class="deep-underline">Right now:</span> 7 user roles,
+              21 record types, 42 pages, 50+ functions — running on three
+              computers the school owns, with no internet required.
+            </p>
+            <p class="closing-note" style="margin-top: 0.8rem;">
+              <span class="deep-underline">Next:</span> Deploy the system,
+              fix the grading logic, add device tracking, set up alerts,
+              connect email, and automate backups.
+            </p>
+          </div>
+          <div class="closing-stamp motion-item">
+            <span>Team</span>
+            <strong>YEMS Development</strong>
+            <p>Damilare, Ayomide, Mohie, Anthony, Erioluwa</p>
+            <div class="closing-cta-list">
+              <button class="cta-action cta-action-light" type="button" aria-pressed="false">
+                <span class="cta-label">Begin deployment</span>
+                <span class="cta-underline" aria-hidden="true"></span>
+                <i data-lucide="play-circle"></i>
+              </button>
+              <button class="cta-action cta-action-light" type="button" aria-pressed="false">
+                <span class="cta-label">Review the setup plan</span>
+                <span class="cta-underline" aria-hidden="true"></span>
+                <i data-lucide="server"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="controls" aria-label="Slide navigation">
+      <button class="nav-button" type="button" data-action="previous" aria-label="Previous slide">
+        <i data-lucide="chevron-left"></i>
+        <span>Previous</span>
+      </button>
+      <div class="progress-wrap" aria-hidden="true">
+        <span class="slide-counter">1 / 15</span>
+        <div class="progress-track">
+          <span class="progress-bar"></span>
+        </div>
+      </div>
+      <button class="nav-button" type="button" data-action="next" aria-label="Next slide">
+        <span>Next</span>
+        <i data-lucide="chevron-right"></i>
+      </button>
+    </footer>
+  </body>
+</html>

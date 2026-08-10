@@ -1,0 +1,33 @@
+node_modules/
+packages/**/node_modules/
+.env
+.env.local
+.env.*.local
+packages/frontend/.env
+packages/frontend/.env.local
+packages/backend/.env
+packages/backend/.env.local
+docs/INTEGRATION_PLAN.md
+.sisyphus/
+.omo/
+yems-offline.tar
+yems-offlinev2.tar
+packages/frontend/assets/WAEC-style Full Mark Answers.htm
+packages/frontend/assets/WAEC-style Full Mark Answers_files/
+packages/frontend/assets/agent-cli-package.tar.gz
+packages/deprecated-frontend/assets/WAEC-style Full Mark Answers_files/
+packages/deprecated-frontend/assets/agent-cli-package.tar.gz
+packages/deprecated-frontend/assets/WAEC-style Full Mark Answers.htm
+
+# Security: secrets, dumps, and sensitive data (do not commit)
+dump.rdb
+*.rdb
+*.backup
+.~lock.*
+ssl/*.key
+ssl/*.pem
+ssl/yems.key
+ssl/yems.crt
+students.csv
+dist/
+.orchids/

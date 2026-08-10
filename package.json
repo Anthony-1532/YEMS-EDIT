@@ -1,0 +1,19 @@
+{
+  "name": "yems-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "bun run --cwd packages/frontend dev",
+    "dev:frontend": "bun run --cwd packages/frontend dev",
+    "dev:backend": "bun run --cwd packages/backend dev",
+    "start": "bun run --cwd packages/frontend dev",
+    "test": "bun run --cwd packages/frontend test && bun run --cwd packages/backend test"
+  },
+  "dependencies": {
+    "electron": "^43.0.0",
+    "electron-builder": "^26.15.3"
+  }
+}

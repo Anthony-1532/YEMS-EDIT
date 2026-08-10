@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="data:," />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YEMS Auth Test</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+    .test-section { border: 1px solid #ddd; border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; }
+    .test-section h2 { margin-top: 0; color: #7B1D3C; }
+    button { background: #7B1D3C; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; margin: 0.5rem 0.5rem 0.5rem 0; }
+    button:hover { background: #5a152b; }
+    button:disabled { background: #ccc; cursor: not-allowed; }
+    input { padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px; margin-right: 0.5rem; }
+    .result { background: #f5f5f5; padding: 1rem; border-radius: 4px; margin-top: 1rem; font-family: monospace; font-size: 0.85rem; white-space: pre-wrap; max-height: 300px; overflow-y: auto; }
+    .success { color: #22c55e; }
+    .error { color: #ef4444; }
+    .info { color: #3b82f6; }
+    .status-badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 99px; font-size: 0.75rem; font-weight: 600; }
+    .status-connected { background: #dcfce7; color: #166534; }
+    .status-disconnected { background: #fee2e2; color: #991b1b; }
+  </style>
+</head>
+<body>
+  <h1><svg class="icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> YEMS Authentication Test</h1>
+  <p>Test the authentication setup with the remote API.</p>
+
+  <div class="test-section">
+    <h2>1. API Connection Status</h2>
+    <p>
+      Status: <span id="connection-status" class="status-badge status-disconnected">Checking...</span>
+    </p>
+    <button onclick="testConnection()">Test Connection</button>
+    <div id="connection-result" class="result" style="display:none;"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>2. Login Test</h2>
+    <div style="margin-bottom: 1rem;">
+      <input type="email" id="test-email" placeholder="Email" value="teacher@yems.local" style="width: 250px;">
+      <input type="password" id="test-pass" placeholder="Password" value="teacher">
+    </div>
+    <button onclick="testLogin()">Test Login</button>
+    <button onclick="testLogin()">Test Login</button>
+    <button onclick="logout()">Logout</button>
+    <div id="login-result" class="result" style="display:none;"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>3. Current Session</h2>
+    <button onclick="checkSession()">Check Session</button>
+    <button onclick="getToken()">Get Token</button>
+    <div id="session-result" class="result" style="display:none;"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>4. Protected API Test</h2>
+    <button onclick="testProtectedApi()">Test /auth/me</button>
+    <button onclick="testExamsApi()">Test /teacher/exams</button>
+    <div id="api-result" class="result" style="display:none;"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>5. Configuration</h2>
+    <button onclick="showConfig()">Show Config</button>
+    <div id="config-result" class="result" style="display:none;"></div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/sync.js"></script>
+
+  <script>
+    function showResult(elementId, data, type = 'info') {
+      const el = document.getElementById(elementId);
+      el.style.display = 'block';
+      el.className = 'result ' + type;
+      el.textContent = typeof data === 'string' ? data : JSON.stringify(data, null, 2);
+    }
+
+    async function testConnection() {
+      const statusEl = document.getElementById('connection-status');
+      statusEl.className = 'status-badge';
+      statusEl.textContent = 'Checking...';
+      
+      try {
+        const connected = await API.checkConnection();
+        statusEl.className = 'status-badge ' + (connected ? 'status-connected' : 'status-disconnected');
+        statusEl.textContent = connected ? 'Connected ✓' : 'Disconnected ✗';
+        showResult('connection-result', { connected, baseUrl: API.CONFIG.baseUrl }, 'success');
+      } catch (e) {
+        statusEl.className = 'status-badge status-disconnected';
+        statusEl.textContent = 'Error ✗';
+        showResult('connection-result', { error: e.message }, 'error');
+      }
+    }
+
+    async function testLogin() {
+      const email = document.getElementById('test-email').value;
+      const pass = document.getElementById('test-pass').value;
+      
+      showResult('login-result', 'Attempting login...', 'info');
+      
+      const result = Auth.login(email, pass, false);
+      
+      if (result.pending) {
+        // Poll for auth state
+        let attempts = 0;
+        const interval = setInterval(() => {
+          attempts++;
+          const user = Auth.current();
+          if (user || attempts >= 30) {
+            clearInterval(interval);
+            if (user) {
+              showResult('login-result', { success: true, user: { name: user.name, email: user.email, role: user.role } }, 'success');
+            } else {
+              showResult('login-result', { success: false, error: 'Login timeout' }, 'error');
+            }
+          }
+        }, 100);
+      } else if (result.ok) {
+        showResult('login-result', result, 'success');
+      } else {
+        showResult('login-result', result, 'error');
+      }
+    }
+
+    function logout() {
+      Auth.logout();
+      showResult('login-result', { loggedOut: true, message: 'Session cleared' }, 'success');
+    }
+
+    function checkSession() {
+      const user = Auth.current();
+      const token = Auth.getToken();
+      showResult('session-result', {
+        user: user || null,
+        hasToken: !!token,
+        tokenPreview: token ? token.substring(0, 50) + '...' : null
+      }, user ? 'success' : 'info');
+    }
+
+    function getToken() {
+      const token = Auth.getToken();
+      showResult('session-result', {
+        token: token || null,
+        length: token ? token.length : 0
+      }, token ? 'success' : 'info');
+    }
+
+    async function testProtectedApi() {
+      try {
+        const result = await API.auth.me();
+        showResult('api-result', result, 'success');
+      } catch (e) {
+        showResult('api-result', { error: e.message, fallback: true }, 'error');
+      }
+    }
+
+    async function testExamsApi() {
+      try {
+        const result = await API.teacher.getExams();
+        showResult('api-result', result, 'success');
+      } catch (e) {
+        showResult('api-result', { error: e.message, fallback: true }, 'error');
+      }
+    }
+
+    function showConfig() {
+      showResult('config-result', window.YEMS_CONFIG, 'info');
+    }
+
+    // Auto-check connection on load
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(testConnection, 500);
+      setTimeout(checkSession, 1000);
+    });
+  </script>
+</body>
+</html>

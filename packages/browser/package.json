@@ -1,0 +1,23 @@
+{
+  "name": "@yems/browser",
+  "version": "1.0.0",
+  "description": "Tiny template browser",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "bun run build:ts",
+    "build:ts": "bunx tsc",
+    "start": "bun run build && bun run electron .",
+    "dev": "bun run build && bun run electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^43.0.0",
+    "electron-builder": "^26.15.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  }
+}

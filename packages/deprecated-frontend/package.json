@@ -1,0 +1,16 @@
+{
+  "name": "@yems/deprecated-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "http-server -p 5173 -c-1 --clean-url",
+    "start": "http-server -p 80 --clean-url",
+    "test": "echo \"No frontend tests configured\" && exit 0"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "htmx.org": "^2.0.10",
+    "http-server": "^14.1.1",
+    "pdfkit": "^0.18.0"
+  }
+}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reset YEMS</title>
+    <link rel="icon" href="data:," />
+</head>
+<body>
+    <h1>YEMS Reset</h1>
+    <p>Click the button to clear localStorage and open the student portal.</p>
+    <button onclick="resetAndOpen()">Reset & Open</button>
+    <script>
+        localStorage.clear();
+        window.location.href = 'index.html';
+    </script>
+</body>
+</html>

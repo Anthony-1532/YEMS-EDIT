@@ -1,0 +1,15 @@
+:80 {
+  # API proxy
+  reverse_proxy /api/* backend:8080
+
+  # Additional API endpoints for direct access
+  reverse_proxy /health backend:8080
+  reverse_proxy /metrics backend:8080
+  reverse_proxy /status/metrics backend:8080
+
+  # Documentation proxy
+  reverse_proxy /docs/* backend:8080
+
+  # Frontend - serve from frontend container
+  reverse_proxy * frontend:80
+}

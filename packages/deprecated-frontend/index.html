@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="data:," />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yeshua Educational Platform – Student Portal</title>
+  <meta name="description"
+    content="Yeshua Educational Platform – Your complete school management and learning portal." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,400&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- API Docs Link -->
+  <div style="position: fixed; top: 10px; right: 10px; z-index: 1000;">
+    <a href="api-docs.html" target="_blank" style="padding: 8px 12px; background: #007bff; color: white; text-decoration: none; border-radius: 4px; font-size: 12px;">API Docs</a>
+  </div>
+
+  <!-- App Root -->
+  <div id="app"></div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" aria-live="polite" aria-atomic="false"></div>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/htmx.js"></script>
+  <script src="js/icons.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/sync.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/teacher.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/assignment-quiz.js"></script>
+  <script>
+    // Late initialization - ensure API uses YEMS_CONFIG after all scripts load
+    (function() {
+      if (window.YEMS_CONFIG && window.API && typeof API.configure === 'function') {
+        API.configure({
+          baseUrl: window.YEMS_CONFIG.API.baseUrl,
+          timeout: window.YEMS_CONFIG.API.timeout,
+          debug: window.YEMS_CONFIG.API.debug
+        });
+        console.log('[YEMS] API configured from YEMS_CONFIG');
+      }
+    })();
+  </script>
+</body>
+
+</html>
